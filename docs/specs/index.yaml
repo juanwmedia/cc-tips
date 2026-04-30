@@ -1,0 +1,8 @@
+project: cc-tips
+features:
+  - name: cc-tips
+    title: Claude Code Tips Plugin
+    status: in-progress
+    priority: P1
+    spec_version: 1
+    depends-on: []
