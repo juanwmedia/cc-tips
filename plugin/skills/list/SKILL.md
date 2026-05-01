@@ -41,11 +41,15 @@ READ_TIPS=$(test -f "${CLAUDE_PLUGIN_DATA}/progress.json" && jq -c '.read_tips /
 
 Output schema per line: `id<TAB>topic<TAB>title_es<TAB>title_en<TAB>read` where `read` is the literal string `true` or `false`.
 
-### 3. Render the table
+**The Bash command must output ONLY TSV** — exactly the jq command above, no extra formatting, no `printf` of markdown, no echo of headers. Step 3 (your response) handles all rendering.
+
+### 3. Render the table — THIS IS YOUR FINAL RESPONSE TO THE USER
+
+**Critical**: the Bash output from step 2 is RAW DATA (TSV) for your eyes only. The user does NOT see it as the answer — they see your response message. **You MUST write the rendered markdown table as your response text after the Bash call returns.** Do not end your turn without it. Do not assume the Bash result is "the answer". You are the renderer; the TSV is your input.
 
 Group entries by topic in this canonical order: `skills, mcp, hooks, subagents, plugins, memory-context, models-cost, permissions, sessions, autonomous, fundamentals`.
 
-For each non-empty topic, render a markdown section:
+For each non-empty topic, write a markdown section to the user as your response:
 
 ```
 ## <Topic title>
