@@ -51,6 +51,7 @@ The plugin is built to add the smallest possible permanent context to your Claud
 - **Discovery happens through one SessionStart hook.** A small plain-text payload is injected once at session start (and re-injected after auto-compaction): the language rule, the topic-awareness instruction (with the topic list derived live from `manifest.json`), and on first session a welcome. After that, the rule rides Claude Code's prompt cache for the rest of the session.
 - **Tip content lives outside the plugin.** The bundled `manifest.json` is a thin index. Tip markdown is fetched from `raw.githubusercontent.com` on first open and cached locally at `${CLAUDE_PLUGIN_DATA}/tips/<slug>-<lang>-v<version>.md`. Subsequent opens of the same tip in the same language hit the cache.
 - **Translation is on demand, not bundled.** Curated tips ship in Spanish and English only. For any other working language, `/cc-tips:open` translates the English source the first time you open a tip and caches the translation. Repeat opens are instant.
+- **Cheapest model possible.** Every skill (`list`, `open`, `share`, `welcome`) runs on Haiku via `model: haiku`. Listing, fetching, marking as read, and on-the-fly translation all use the smallest model in the family — your orchestrator's tier (Sonnet, Opus, etc.) is never invoked by the plugin.
 
 Aim: contextual discoverability without a permanent context tax. Trade-off: one network call (and, for non-ES/EN, one translation) per tip per language — paid once.
 
