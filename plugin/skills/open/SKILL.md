@@ -118,6 +118,9 @@ Output the (frontmatter-stripped) tip content as your response message. After th
 - **Attribution** (only if `$ATTRIB` is non-empty):
   > _Contributed by [@$ATTRIB](https://github.com/$ATTRIB)_
 
+- **Contribute hint** (always, in the working language):
+  > _Discovered a useful pattern? Share it back with `/cc-tips:share`._
+
 - **Update reminder** (always, in the working language):
   > _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update juanwmedia-cc-tips` periodically._
 
