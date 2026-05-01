@@ -12,6 +12,8 @@ Draft a Claude Code tip from the recent conversation, present for review, and su
 
 The session-start hook has already injected the LANGUAGE RULE. Apply it for the conversational layer (drafts shown to the user, prompts, confirmation messages). The issue title and body submitted to GitHub are always in English (so the maintainer can curate uniformly).
 
+Run silently: do not narrate intermediate steps ("I'll mine...", "Let me draft..."). Output only the final user-visible result (the draft for review, the issue URL, or the browser fallback).
+
 ## Procedure
 
 ### 1. Mine the conversation

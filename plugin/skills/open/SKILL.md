@@ -13,6 +13,8 @@ Open the tip with numeric id `$ARGUMENTS`, fetch (cache or curl), render to the 
 
 The session-start hook has already injected the LANGUAGE RULE. It governs both the conversational layer (status messages, attribution, footer) and the tip content (Spanish or English curated; other languages translated on the fly and cached).
 
+Run silently: do not narrate intermediate steps ("I'll fetch...", "Let me verify..."). Output only the final user-visible result.
+
 ## Procedure
 
 ### 1. Parse argument

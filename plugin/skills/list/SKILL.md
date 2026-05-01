@@ -13,6 +13,8 @@ Render the tip manifest as a table for the user. Optional topic filter via `$ARG
 
 The session-start hook has already injected the LANGUAGE RULE. Apply it for the conversational layer (table headers, status labels, footer, error messages). Tip titles come from the manifest as-is.
 
+Run silently: do not narrate intermediate steps ("I'll read...", "Let me check..."). Output only the final user-visible result.
+
 ## Procedure
 
 1. **Use the Read tool** (not Bash, `cat`, `jq`, or any shell command) to load `${CLAUDE_PLUGIN_ROOT}/manifest.json`. Parse the JSON yourself.

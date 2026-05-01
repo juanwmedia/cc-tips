@@ -11,6 +11,8 @@ Render the welcome block on demand, regardless of whether the user has seen it b
 
 The session-start hook has already injected the LANGUAGE RULE. Apply it: render in the user's working language; translate the English source naturally if the working language is not English. Keep "Claude Code Tips" and slash command names in English.
 
+Run silently: no narration. Output only the welcome block.
+
 ## Welcome block (English source)
 
 > **Welcome to Claude Code Tips.**
