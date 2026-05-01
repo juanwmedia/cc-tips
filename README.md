@@ -11,8 +11,6 @@ The plugin needs the following on the user's machine:
 - `bash` — for the SessionStart hook. Native on macOS, Linux, and WSL. On native Windows, install [Git for Windows](https://git-scm.com/downloads/win) (the setup recommended by Claude Code itself), which provides Git Bash. WSL users do not need it.
 - `curl` — for fetching tip markdowns. Native on macOS, Linux, WSL, and Windows 10 1809+ (Claude Code's minimum supported Windows version).
 
-The plugin does NOT depend on `jq`, `python3`, or `node` at runtime. State and JSON manipulation use Claude Code's native Read/Write tools.
-
 For contribution submission via `/cc-tips:share`, the [`gh` CLI](https://cli.github.com/) is recommended; if it is missing or unauthenticated, the plugin falls back to a pre-filled GitHub URL you can open manually.
 
 ## Install
@@ -44,6 +42,17 @@ Tips are classified into one of:
 ## Contributing
 
 Run `/cc-tips:share` after a session where you have discovered a useful pattern. The skill drafts an issue from the conversation context, you review, and submit. The maintainer curates contributions and may publish them as full tips.
+
+## Design notes
+
+The plugin is built to add the smallest possible permanent context to your Claude Code session.
+
+- **Skill descriptions stay out of context.** All four skills (`list`, `open`, `share`, `welcome`) declare `disable-model-invocation: true`. They run on slash command invocation only; their bodies are not loaded until you call them.
+- **Discovery happens through one SessionStart hook.** A small plain-text payload is injected once at session start (and re-injected after auto-compaction): the language rule, the topic-awareness instruction (with the topic list derived live from `manifest.json`), and on first session a welcome. After that, the rule rides Claude Code's prompt cache for the rest of the session.
+- **Tip content lives outside the plugin.** The bundled `manifest.json` is a thin index. Tip markdown is fetched from `raw.githubusercontent.com` on first open and cached locally at `${CLAUDE_PLUGIN_DATA}/tips/<slug>-<lang>-v<version>.md`. Subsequent opens of the same tip in the same language hit the cache.
+- **Translation is on demand, not bundled.** Curated tips ship in Spanish and English only. For any other working language, `/cc-tips:open` translates the English source the first time you open a tip and caches the translation. Repeat opens are instant.
+
+Aim: contextual discoverability without a permanent context tax. Trade-off: one network call (and, for non-ES/EN, one translation) per tip per language — paid once.
 
 ## License
 
