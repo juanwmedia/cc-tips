@@ -21,7 +21,7 @@ The session-start hook has already injected the LANGUAGE RULE. It governs both t
 
 ### 2. Look up the tip
 
-Read `${CLAUDE_PLUGIN_ROOT}/manifest.json`. Find the entry with `id == $ARGUMENTS`.
+**Use the Read tool** (not Bash, `cat`, `jq`, or any shell command) to load `${CLAUDE_PLUGIN_ROOT}/manifest.json`. Parse the JSON yourself and find the entry with `id == $ARGUMENTS`.
 
 If not found, respond (in the working language): `Tip $ARGUMENTS not found. Run /cc-tips:list to see available tips.` Stop.
 
@@ -94,9 +94,9 @@ Output the tip content (the translated content if you just translated it; otherw
 
 ### 8. Mark as read
 
-Read `${CLAUDE_PLUGIN_DATA}/progress.json`. If the file does not exist, treat the state as `{"read_tips": []}` and continue.
+**Use the Read tool** to load `${CLAUDE_PLUGIN_DATA}/progress.json`. If the file does not exist, treat the state as `{"read_tips": []}` and continue.
 
-If `$ARGUMENTS` (as an integer) is NOT already in `read_tips`, append it. Use the Write tool to save the updated state back to `${CLAUDE_PLUGIN_DATA}/progress.json`. Do not shell out to jq or any external tool — Read and Write are sufficient.
+If `$ARGUMENTS` (as an integer) is NOT already in `read_tips`, append it. **Use the Write tool** to save the updated state back to `${CLAUDE_PLUGIN_DATA}/progress.json`. Do NOT shell out to `cat`, `jq`, or any external tool — Read and Write are sufficient.
 
 ## Notes
 

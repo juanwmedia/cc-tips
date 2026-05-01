@@ -15,8 +15,8 @@ The session-start hook has already injected the LANGUAGE RULE. Apply it for the 
 
 ## Procedure
 
-1. Read `${CLAUDE_PLUGIN_ROOT}/manifest.json` (parse JSON natively).
-2. Read `${CLAUDE_PLUGIN_DATA}/progress.json` to get `read_tips`. If the file does not exist or has no `read_tips` key, treat it as an empty list.
+1. **Use the Read tool** (not Bash, `cat`, `jq`, or any shell command) to load `${CLAUDE_PLUGIN_ROOT}/manifest.json`. Parse the JSON yourself.
+2. **Use the Read tool** to load `${CLAUDE_PLUGIN_DATA}/progress.json` and extract `read_tips`. If the file does not exist or has no `read_tips` key, treat it as an empty list. Do not shell out.
 3. If `$ARGUMENTS` is non-empty, treat it as a topic filter:
    - Validate against the topics present in the manifest. To enumerate them, derive the unique set of `topic` values from the entries you just read.
    - If the argument is not in that set, respond (in the working language): `Unknown topic '$ARGUMENTS'. Valid topics: <comma-separated list of topics from the manifest>.` Stop.
