@@ -17,45 +17,31 @@ Run silently: do not narrate intermediate steps ("I'll read...", "Let me check..
 
 ## Procedure
 
-All JSON parsing goes through `jq`. Cross-platform shell idioms: always quote paths, no `echo` for literal strings, `mktemp` without flags, `--argjson` for numeric arguments, `--arg` for strings.
+All JSON parsing goes through `jq`. **Use one Bash invocation, not several** — shell variables do NOT persist between Bash tool calls, so combine everything into a single command. Cross-platform shell idioms: always quote paths, `--argjson` for numeric arguments, `--arg` for strings.
 
-### 1. Validate topic argument (if any)
+### 1. (Optional) Validate topic argument
 
-If `$ARGUMENTS` is non-empty, it's a topic filter. Get the unique topic set from the manifest:
+If `$ARGUMENTS` is non-empty and is NOT one of the canonical topics (`skills, mcp, hooks, subagents, plugins, memory-context, models-cost, permissions, sessions, autonomous, fundamentals`), respond (in the working language): `Unknown topic '$ARGUMENTS'. Valid topics: skills, mcp, hooks, subagents, plugins, memory-context, models-cost, permissions, sessions, autonomous, fundamentals.` Stop. (No Bash needed for this check — the canonical list is fixed.)
 
-```bash
-VALID=$(jq -r '[.tips[].topic] | unique | join(",")' "${CLAUDE_PLUGIN_ROOT}/manifest.json")
-```
+### 2. Pull all the data with ONE bash call
 
-If `$ARGUMENTS` is not a substring of `$VALID`, respond (in the working language): `Unknown topic '$ARGUMENTS'. Valid topics: <VALID with ", " separators>.` Stop.
-
-### 2. Read state
-
-```bash
-test -f "${CLAUDE_PLUGIN_DATA}/progress.json" \
-  && READ_TIPS=$(jq -r '.read_tips // [] | join(",")' "${CLAUDE_PLUGIN_DATA}/progress.json") \
-  || READ_TIPS=""
-```
-
-`READ_TIPS` is now a comma-separated list of read ids (possibly empty).
-
-### 3. Pull entries from the manifest
+This single command reads `read_tips` (defaulting to `[]` if missing) and outputs one tab-separated line per tip with the read flag baked in:
 
 For the FULL list (no `$ARGUMENTS`):
 
 ```bash
-jq -r '.tips[] | [.id, .topic, .title_es, .title_en] | @tsv' "${CLAUDE_PLUGIN_ROOT}/manifest.json"
+READ_TIPS=$(test -f "${CLAUDE_PLUGIN_DATA}/progress.json" && jq -c '.read_tips // []' "${CLAUDE_PLUGIN_DATA}/progress.json" || printf '%s' '[]') ; jq -r --argjson p "$READ_TIPS" '.tips[] | [.id, .topic, .title_es, .title_en, (.id | IN($p[]) | tostring)] | @tsv' "${CLAUDE_PLUGIN_ROOT}/manifest.json"
 ```
 
 For a TOPIC FILTER:
 
 ```bash
-jq -r --arg t "$ARGUMENTS" '.tips[] | select(.topic == $t) | [.id, .topic, .title_es, .title_en] | @tsv' "${CLAUDE_PLUGIN_ROOT}/manifest.json"
+READ_TIPS=$(test -f "${CLAUDE_PLUGIN_DATA}/progress.json" && jq -c '.read_tips // []' "${CLAUDE_PLUGIN_DATA}/progress.json" || printf '%s' '[]') ; jq -r --arg t "$ARGUMENTS" --argjson p "$READ_TIPS" '.tips[] | select(.topic == $t) | [.id, .topic, .title_es, .title_en, (.id | IN($p[]) | tostring)] | @tsv' "${CLAUDE_PLUGIN_ROOT}/manifest.json"
 ```
 
-The output is one tab-separated line per tip: `id<TAB>topic<TAB>title_es<TAB>title_en`.
+Output schema per line: `id<TAB>topic<TAB>title_es<TAB>title_en<TAB>read` where `read` is the literal string `true` or `false`.
 
-### 4. Render the table
+### 3. Render the table
 
 Group entries by topic in this canonical order: `skills, mcp, hooks, subagents, plugins, memory-context, models-cost, permissions, sessions, autonomous, fundamentals`.
 
@@ -71,10 +57,10 @@ For each non-empty topic, render a markdown section:
 ```
 
 - Use `title_es` if the working language is Spanish, else `title_en`.
-- Status: tips whose id appears in `READ_TIPS` show `✓ read`; otherwise `unread`.
+- Status: if the read flag is `true` → `✓ read`; otherwise `unread`.
 - Translate the column headers (`ID`, `Title`, `Status`) and the `unread` word to the working language. Keep tip titles verbatim from the manifest.
 
-### 5. Append two one-line footers, in the working language
+### 4. Append two one-line footers, in the working language
 
 > Run `/cc-tips:open <ID>` to read a tip.
 >
