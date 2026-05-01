@@ -42,7 +42,7 @@ Format per topic:
 
 > Run `/cc-tips:open <ID>` to read a tip.
 >
-> _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update cc-tips` periodically._
+> _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update juanwmedia-cc-tips` periodically._
 
 Translate the first line to the working language (e.g., Spanish: "Ejecuta `/cc-tips:open <ID>` para leer un tip."). Keep the slash command and the literal placeholder `<ID>`.
 

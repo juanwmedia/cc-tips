@@ -67,7 +67,7 @@ curl -sLf --max-time 15 "<source_url>" -o "<cache_path>"
 ```
 
 If `curl` exits non-zero (network failure, 404, timeout), respond (in the working language):
-> Couldn't fetch tip $ARGUMENTS. The remote URL is unreachable or the file is missing. Try again in a moment, or run `/plugin marketplace update cc-tips` to refresh the manifest.
+> Couldn't fetch tip $ARGUMENTS. The remote URL is unreachable or the file is missing. Try again in a moment, or run `/plugin marketplace update juanwmedia-cc-tips` to refresh the manifest.
 
 Stop. Do NOT add to `read_tips`.
 
@@ -90,7 +90,7 @@ Output the tip content (the translated content if you just translated it; otherw
   > _Contributed by [@username](https://github.com/<username>)_
 
 - **Update reminder** (always, in the working language):
-  > _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update cc-tips` periodically._
+  > _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update juanwmedia-cc-tips` periodically._
 
 ### 8. Mark as read
 
