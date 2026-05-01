@@ -96,12 +96,13 @@ Now branch on language:
 
 - **`lang_code` is `es` or `en`**: `cat` the cache file. The content is the curated tip — proceed to step 7.
 
-- **otherwise (translation case)**: `cat` the cache file (it contains the English source just downloaded). Translate it into the working language following the LANGUAGE RULE's translation rules:
+- **otherwise (translation case)**: `cat` the cache file (it contains the English source just downloaded). Translate the BODY into the working language following the LANGUAGE RULE's translation rules:
+  - Skip the YAML frontmatter (lines from the first `---` through the second `---`). It is metadata, not user-facing content. Do NOT translate or include it.
   - Preserve all code blocks, terminal commands, and configuration snippets verbatim.
   - Preserve "Claude Code" and technical terms in English (hooks, skills, MCP, subagents, plugins).
   - Translate prose, headers, and explanatory text only.
 
-  Save the translated markdown back to the cache path so subsequent opens hit the cache. Use atomic write:
+  Save the translated body (no frontmatter) back to the cache path so subsequent opens hit the cache. Use atomic write:
 
   ```bash
   TMP=$(mktemp)
@@ -110,7 +111,9 @@ Now branch on language:
 
 ### 7. Render
 
-Output the tip content (the translated content if you just translated it; otherwise the cached content). After the markdown body, append (each on its own paragraph):
+**Strip the YAML frontmatter before rendering.** Tip files start with a frontmatter block (`---` line, several `key: value` lines, another `---` line). This metadata is for the build pipeline, NOT for the user. Drop everything from the first `---` through the second `---` (inclusive) and render only the body that follows. If the content does not start with `---`, render as-is.
+
+Output the (frontmatter-stripped) tip content as your response message. After the markdown body, append (each on its own paragraph):
 
 - **Attribution** (only if `$ATTRIB` is non-empty):
   > _Contributed by [@$ATTRIB](https://github.com/$ATTRIB)_
