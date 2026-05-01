@@ -1,9 +1,9 @@
 ---
 title: "Claude Code Tips Plugin"
 status: approved
-spec_version: 1
+spec_version: 2
 created: 2026-04-28
-last_updated: 2026-04-28
+last_updated: 2026-05-01
 ---
 
 # Claude Code Tips Plugin
@@ -59,9 +59,10 @@ so users stay current without plugin version bumps.
    skill detects the topic match, THEN it surfaces one tip (the most
    relevant) with its id, topic, one-line summary, and the command to open
    it (`/cc-tips:open <N>`).
-2. GIVEN a tip has already been surfaced organically today
-   (`last_organic_surface_at` is today), WHEN further matches occur in any
-   session, THEN no new organic surface is emitted that day.
+2. GIVEN a tip on topic T has already been surfaced organically in the
+   current session, WHEN further matches on topic T occur in the same session,
+   THEN no new organic surface is emitted for T. Different topics each get
+   their own once-per-session trigger.
 3. GIVEN no unread tips match the current context, WHEN matches are evaluated,
    THEN no organic surface is emitted.
 
@@ -118,22 +119,32 @@ so users stay current without plugin version bumps.
 
 12. GIVEN the user's recent prompts are in Spanish, WHEN the plugin surfaces
     or responds, THEN the conversational layer is in Spanish and tip content
-    is served from `<slug>-es.md`.
-13. GIVEN the user's recent prompts are in any language other than Spanish,
-    WHEN the plugin surfaces or responds, THEN the conversational layer is in
-    that language and tip content is served from `<slug>-en.md`. Technical
-    terms (hooks, skills, MCP, subagents, plugins) remain in English.
+    is served from the curated `<slug>-es-v<version>.md` cache (fetched from
+    `url_es` on cache miss).
+13. GIVEN the user's recent prompts are in English, WHEN the plugin surfaces
+    or responds, THEN the conversational layer is in English and tip content
+    is served from the curated `<slug>-en-v<version>.md` cache (fetched from
+    `url_en` on cache miss).
+13b. GIVEN the user's recent prompts are in any language other than Spanish
+    or English (Italian, French, Portuguese, German, …), WHEN the plugin
+    surfaces or responds, THEN the conversational layer is in that language;
+    when `/cc-tips:open <N>` runs, the EN source is fetched, the open skill
+    translates it on the fly preserving code blocks and technical terms in
+    English, and the translation is cached at `<slug>-<lang>-v<version>.md`.
+    Subsequent opens of the same tip in the same language hit the cache.
+    Technical terms (hooks, skills, MCP, subagents, plugins, Claude Code) and
+    slash command names remain in English regardless of working language.
 
 ### Welcome
 
-14. GIVEN `progress.json` does not have `first_seen_at`, WHEN the user starts
+14. GIVEN the SessionStart hook runs and the flag file
+    `${CLAUDE_PLUGIN_DATA}/first_seen` does not exist, WHEN the user starts
     a Claude Code session, THEN before any other plugin output the welcome
     message is presented. It lists `/cc-tips:list`,
     `/cc-tips:open <N>`, `/cc-tips:share`, briefly describes
-    the contextual recommendations behavior, includes a one-line reminder to
-    keep the plugin updated, and ends with "You won't see this message again
-    — run `/cc-tips:welcome` to revisit it." After presentation,
-    `first_seen_at` is set so subsequent sessions do not show it again.
+    the contextual recommendations behavior, and ends with "You won't see this
+    auto-message again." After presentation, the flag file is created so
+    subsequent sessions do not show it again.
 15. GIVEN the user runs `/cc-tips:welcome`, WHEN invoked, THEN the
     welcome message is presented regardless of `first_seen_at`.
 
@@ -185,11 +196,14 @@ recycled. Retired tips leave gaps in the numbering.
 - Public attribution on wmedia.es (no schema change in the wmedia.es app).
 - A `--from-issue` flag on `/claude-code-tip` to convert GitHub issues into
   tips (deferred to a follow-up feature).
-- Pre-translated tip content for languages beyond Spanish and English.
-- Active rate limiting beyond the daily organic surface cap.
+- Curated tip authorings beyond Spanish and English (other languages are
+  served via on-the-fly LLM translation from the English source, cached).
+- Active rate limiting beyond the per-topic-per-session organic surface cap.
 - Editing or deleting a published tip via the plugin (handled at wmedia.es
   side and propagated through manifest version bumps).
 - Pull-request-based contributions (issue is the only contribution shape in v1).
+- A `/cc-tips:apply <N>` skill that contextualizes a tip to the current
+  session (deferred to v2; tracked in the post-v1 issue queue).
 
 ## Open Questions
 

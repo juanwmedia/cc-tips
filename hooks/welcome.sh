@@ -1,34 +1,35 @@
 #!/bin/bash
 # SessionStart hook for cc-tips.
-# On the user's first session ever, emits a welcome message into Claude's
-# context via additionalContext. Idempotent: subsequent sessions emit nothing.
+#
+# Emits plain-text additionalContext per Claude Code hooks docs:
+# "plain stdout already reaches Claude for this event."
+#
+# Topics are derived at runtime from manifest.json with POSIX grep/sed/sort,
+# so adding a topic via auto-publish updates the hook output without edits.
+#
+# Cross-platform contract: POSIX bash + grep + sed + sort + paste + cat
+# + mkdir + touch + printf. No jq, no python3, no node.
 
 set -euo pipefail
 
-PROGRESS="${CLAUDE_PLUGIN_DATA}/progress.json"
 mkdir -p "${CLAUDE_PLUGIN_DATA}"
+FLAG="${CLAUDE_PLUGIN_DATA}/first_seen"
 
-if [ ! -f "$PROGRESS" ]; then
-  echo '{"first_seen_at": null, "last_organic_surface_at": null, "read_tips": [], "language_preference": null}' > "$PROGRESS"
+TOPICS=$(grep -E '^[[:space:]]*"topic":' "${CLAUDE_PLUGIN_ROOT}/manifest.json" \
+  | sed 's/.*"topic":[[:space:]]*"\([^"]*\)".*/\1/' \
+  | sort -u \
+  | paste -sd ',' - \
+  | sed 's/,/, /g')
+
+TOPIC_AWARENESS=$(sed "s|{TOPICS}|${TOPICS}|" "${CLAUDE_PLUGIN_ROOT}/hooks/topic-awareness.md")
+
+cat "${CLAUDE_PLUGIN_ROOT}/hooks/language-rule.md"
+printf '\n'
+
+if [ ! -f "$FLAG" ]; then
+  touch "$FLAG"
+  cat "${CLAUDE_PLUGIN_ROOT}/hooks/welcome-msg.md"
+  printf '\n'
 fi
 
-FIRST_SEEN=$(jq -r '.first_seen_at // "null"' "$PROGRESS" 2>/dev/null || echo "null")
-
-if [ "$FIRST_SEEN" != "null" ]; then
-  exit 0
-fi
-
-NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-
-# Mark first_seen_at BEFORE emitting so a crash mid-render does not retrigger.
-TMP=$(mktemp)
-jq --arg now "$NOW" '.first_seen_at = $now' "$PROGRESS" > "$TMP" && mv "$TMP" "$PROGRESS"
-
-cat <<'EOF'
-{
-  "hookSpecificOutput": {
-    "hookEventName": "SessionStart",
-    "additionalContext": "FIRST_RESPONSE_REQUIRED: Before processing the user's first prompt or invoking any tool, output the welcome message below. Adapt to the user's working language: emit as-is in English by default; if the user's first prompt is clearly in Spanish, translate naturally into Spanish. Keep technical terms in English (Claude Code, /cc-tips:welcome, etc.). Then address whatever the user asked.\n\nWELCOME MESSAGE (English canonical):\n---\n**Claude Code Tips is active.** I'll mention relevant tips contextually as you work. Run `/cc-tips:welcome` to see all commands. _(You won't see this auto-message again.)_\n---"
-  }
-}
-EOF
+printf '%s\n' "$TOPIC_AWARENESS"

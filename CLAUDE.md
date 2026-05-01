@@ -27,10 +27,21 @@ only the maintainer promotes selected issues to tips via
   Contributor GitHub usernames live in the manifest.
 - **Auto-publish.** Every `/claude-code-tip` publish in `ai-infra` updates
   this plugin's manifest and pushes the tip markdown to this repo.
-- **Conversational language follows the user; tip content is ES or EN only.**
-  If a user works in Italian, the surface and prompts are in Italian; the tip
-  content is served in EN. Technical terms (hooks, skills, MCP, subagents,
-  plugins) stay in English regardless.
+- **Conversational language follows the user.** Welcome, topic-awareness
+  mentions, and command UI render in the user's working language; translate
+  from the English source naturally.
+- **Tip content has two curated authorings (Spanish and English) plus
+  on-the-fly translation for everything else.** Spanish users see curated
+  Spanish; English users see curated English; users in any other language
+  (Italian, French, Portuguese, German, …) get the EN source translated by
+  `/cc-tips:open` (Haiku) and cached locally at
+  `<slug>-<lang>-v<version>.md`, so subsequent reads are instant. Technical
+  terms (hooks, skills, MCP, subagents, plugins, Claude Code) stay in
+  English regardless.
+- **Hook is plain stdout, not JSON.** `welcome.sh` cats POSIX-friendly
+  text fragments (`language-rule.md`, `welcome-msg.md`, `topic-awareness.md`)
+  and runtime-derives the topic list from `manifest.json` via grep+sed.
+  No `jq`, no `python3`, no `node` runtime dependencies.
 
 ## Related repos
 

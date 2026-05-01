@@ -187,4 +187,11 @@ This is a forward-compatible field addition not present in the spec. To be recon
 (empty)
 
 ## Iteration Log
-(empty)
+
+### B2 — 2026-04-30 — Auto-invocable skill replaced by SessionStart hook
+- **Removed**: `skills/cc-tips/` entirely. The auto-invocable skill body had been doing 3 visible tool calls (Read manifest, Read progress, Bash state update) every time it activated — 3–4s latency for what should be a one-line inline mention. The skill abstraction was being misused: the only durable value was the description-loaded-into-context side effect; the body itself was misaligned with the actual UX goal.
+- **Replaced by**: hook `hooks/welcome.sh` extended to always emit topic-awareness `additionalContext`, plus the welcome message on first session (gated by `first_seen_at`). Constructed via `python3` heredoc for bulletproof JSON escaping.
+- **Durability**: confirmed via doc that SessionStart hooks re-fire after auto-compaction (`source: "compact"`), so topic awareness survives session compaction equally well to a skill description.
+- **State**: `last_organic_surface_at` is no longer tracked. Daily cap is now an instruction in the hook's text ("at most once per session") rather than enforced state. Trade-off accepted: we trust the model to self-regulate one inline mention per session.
+- **Outcome**: plugin reduced to 4 skills (list, open, share, welcome) + 1 hook. Zero tool calls visible when the model surfaces a tip mention inline.
+- **AC coverage**: AC-1 (organic mention) now fulfilled by the hook-injected instruction; AC-2 (daily cap) becomes conversational not state-based; AC-5 (excluded after open) still enforced via `read_tips` in `/cc-tips:open`. All other ACs unchanged.
