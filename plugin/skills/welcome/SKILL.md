@@ -24,6 +24,6 @@ The session-start hook has already injected the LANGUAGE RULE. Apply it: render 
 > - `/cc-tips:open <N>` — read a specific tip.
 > - `/cc-tips:share` — contribute a tip you've discovered.
 >
-> To get new tips as they're published, enable auto-update for this plugin in `/plugin marketplace`, or run `/plugin marketplace update cc-tips` periodically.
+> To get new tips as they're published, enable auto-update for this plugin in `/plugin marketplace`, or run `/plugin marketplace update juanwmedia-cc-tips` periodically.
 
 After rendering, do nothing else. Do not modify state.
