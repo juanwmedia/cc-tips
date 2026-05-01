@@ -38,10 +38,20 @@ only the maintainer promotes selected issues to tips via
   `<slug>-<lang>-v<version>.md`, so subsequent reads are instant. Technical
   terms (hooks, skills, MCP, subagents, plugins, Claude Code) stay in
   English regardless.
-- **Hook is plain stdout, not JSON.** `welcome.sh` cats POSIX-friendly
-  text fragments (`language-rule.md`, `welcome-msg.md`, `topic-awareness.md`)
-  and runtime-derives the topic list from `manifest.json` via grep+sed.
-  No `jq`, no `python3`, no `node` runtime dependencies.
+- **Hook is plain stdout, not JSON.** `welcome.sh` cats text fragments
+  (`language-rule.md`, `welcome-msg.md`, `topic-awareness.md`) and
+  runtime-derives the topic list from `manifest.json` via `jq`.
+- **JSON parsing via `jq` everywhere.** Skills (`list`, `open`) and the hook
+  use `jq` to filter the manifest and update `progress.json`. The cost
+  gradient vs Read-tool is ~250× per call (25 K tokens vs ~100 tokens), so
+  fighting `jq` was costing real money and context. Runtime deps are
+  `bash`, `curl`, `jq`. No Python, no Node.
+- **Manifest schema is lean (v1.2.0).** Per entry: `id`, `slug`, `topic`,
+  `version`, `title_es`, `title_en`, `url_es`, `url_en`,
+  `contributed_by_github_username`. Earlier versions also carried
+  `slug_es`, `slug_en`, `summary_*`, `external_url_*` — all dropped as
+  unused. If you ever need them again, restore them; nothing in the auto-
+  publish flow assumes they're absent.
 
 ## Versioning discipline (READ BEFORE COMMITTING)
 

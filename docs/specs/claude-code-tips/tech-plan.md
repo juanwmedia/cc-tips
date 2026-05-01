@@ -203,3 +203,12 @@ This is a forward-compatible field addition not present in the spec. To be recon
 - **Effect on user updates**: tip content fixes (typos, broken links, content corrections) propagate without `/plugin marketplace update`. New tips added to the manifest still require an update so they appear in `/cc-tips:list`, but that was always the case.
 - **AC coverage**: no change. AC-8/AC-9/AC-13b were already accurate (curl + cache), so no spec edits are needed. `spec_version` is not bumped.
 - **Migration risk**: users with the plugin already installed will re-clone on their next `/plugin marketplace update`. Their old install cache may keep stale `tips/` content on disk; harmless because `open` always curls.
+
+### B7 — 2026-05-01 — Embrace jq, prune manifest schema
+- **Problem**: skills used `Read` tool to load `manifest.json` (76 KB → ~25 K input tokens) on every list/open. Haiku, given globally-permitted `Bash(jq *)`, kept routing around the directive and using `cat | jq` (~100 tokens). Forcing Read on a 76 KB JSON blob was costing ~250× more tokens per call than the alternative the model wanted to use.
+- **Decision**: stop fighting the tool. `jq` is a standard CLI utility (Homebrew on macOS, native packages on Linux, winget/scoop/choco on Windows) — comparable footprint to `curl`, not a heavyweight runtime like Python or Node. Declare it as a hard dependency, use it consistently in skills and the hook, and prune the manifest of fields no skill reads.
+- **Manifest schema (1.2.0)**: dropped `slug_es`, `slug_en`, `summary_*`, `external_url_*` from each entry. Kept `id`, `slug`, `topic`, `version`, `title_es`, `title_en`, `url_es`, `url_en`, `contributed_by_github_username`. Bundled manifest size: 76 KB → 31 KB.
+- **Skills**: `list/SKILL.md` and `open/SKILL.md` now use `jq` for filtering, lookup, and atomic progress.json updates. Anti-jq directives removed. Cross-platform shell idioms enforced (quoted paths, `printf '%s'` for literals, `mktemp` without flags, `--argjson` for numeric args).
+- **Hook**: `welcome.sh` replaces a 5-line grep+sed pipeline with one `jq` call to derive the topic list.
+- **Docs**: README's Requirements section adds `jq` with per-platform install commands. CLAUDE.md's "no jq" decision reverted. Spec schema example updated.
+- **Version**: `1.1.1` → `1.2.0` (manifest schema change + new runtime dep = minor).

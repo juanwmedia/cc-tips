@@ -1,7 +1,7 @@
 ---
 title: "Claude Code Tips Plugin"
 status: approved
-spec_version: 2
+spec_version: 3
 created: 2026-04-28
 last_updated: 2026-05-01
 ---
@@ -161,11 +161,11 @@ so users stay current without plugin version bumps.
     underlying wmedia.es publish has succeeded, THEN the user is informed and
     given manual recovery steps; the wmedia.es publish is NOT rolled back.
 
-## Manifest schema (informative)
+## Manifest schema (informative — v1.2.0)
 
 ```json
 {
-  "version": "1.0.0",
+  "version": "1.2.0",
   "tips": [
     {
       "id": 1,
@@ -173,7 +173,6 @@ so users stay current without plugin version bumps.
       "topic": "sessions",
       "version": 1,
       "title_es": "...", "title_en": "...",
-      "summary_es": "...", "summary_en": "...",
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-checkpoints-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-checkpoints-en.md",
       "contributed_by_github_username": null
@@ -181,6 +180,8 @@ so users stay current without plugin version bumps.
   ]
 }
 ```
+
+The schema is intentionally lean: skills parse the manifest with `jq` at runtime, so every kilobyte that ships with the plugin is one we pay for in `/plugin install`. Earlier versions carried `slug_es`, `slug_en`, `summary_es`, `summary_en`, `external_url_es`, and `external_url_en` — all dropped in 1.2.0 as unused at runtime.
 
 Topics are the 11 from wmedia's `HubTopic` enum: `skills`, `mcp`, `hooks`,
 `subagents`, `plugins`, `memory-context`, `models-cost`, `permissions`,

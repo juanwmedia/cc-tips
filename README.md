@@ -10,6 +10,12 @@ The plugin needs the following on the user's machine:
 
 - `bash` — for the SessionStart hook. Native on macOS, Linux, and WSL. On native Windows, install [Git for Windows](https://git-scm.com/downloads/win) (the setup recommended by Claude Code itself), which provides Git Bash. WSL users do not need it.
 - `curl` — for fetching tip markdowns. Native on macOS, Linux, WSL, and Windows 10 1809+ (Claude Code's minimum supported Windows version).
+- `jq` — for JSON parsing in skills and the SessionStart hook. Used to filter the manifest, look up tips by id, and atomically update read state. Install:
+  - macOS (Homebrew): `brew install jq`
+  - Debian/Ubuntu: `sudo apt install jq`
+  - Fedora/RHEL: `sudo dnf install jq`
+  - Alpine: `apk add jq`
+  - Windows: `winget install jqlang.jq` (or `scoop install jq`, or `choco install jq`)
 
 For contribution submission via `/cc-tips:share`, the [`gh` CLI](https://cli.github.com/) is recommended; if it is missing or unauthenticated, the plugin falls back to a pre-filled GitHub URL you can open manually.
 
@@ -49,7 +55,8 @@ The plugin is built to add the smallest possible permanent context to your Claud
 
 - **Skill descriptions stay out of context.** All four skills (`list`, `open`, `share`, `welcome`) declare `disable-model-invocation: true`. They run on slash command invocation only; their bodies are not loaded until you call them.
 - **Discovery happens through one SessionStart hook.** A small plain-text payload is injected once at session start (and re-injected after auto-compaction): the language rule, the topic-awareness instruction (with the topic list derived live from `manifest.json`), and on first session a welcome. After that, the rule rides Claude Code's prompt cache for the rest of the session.
-- **Tip content lives outside the plugin.** The bundled `manifest.json` is a thin index. Tip markdown is fetched from `raw.githubusercontent.com` on first open and cached locally at `${CLAUDE_PLUGIN_DATA}/tips/<slug>-<lang>-v<version>.md`. Subsequent opens of the same tip in the same language hit the cache.
+- **Tip content lives outside the plugin.** The bundled `manifest.json` is a thin index (9 fields per entry, ~31 KB total). Tip markdown is fetched from `raw.githubusercontent.com` on first open and cached locally at `${CLAUDE_PLUGIN_DATA}/tips/<slug>-<lang>-v<version>.md`. Subsequent opens of the same tip in the same language hit the cache.
+- **JSON parsing via `jq`, not the model.** Skills filter the manifest and update progress with `jq` shell commands rather than feeding 25 K tokens of JSON into the conversation. Result: tip lookup costs ~100 tokens instead of ~25 000 — the model only sees what it asks for, never the haystack.
 - **Translation is on demand, not bundled.** Curated tips ship in Spanish and English only. For any other working language, `/cc-tips:open` translates the English source the first time you open a tip and caches the translation. Repeat opens are instant.
 - **Cheapest model possible.** Every skill (`list`, `open`, `share`, `welcome`) runs on Haiku via `model: haiku`. Listing, fetching, marking as read, and on-the-fly translation all use the smallest model in the family — your orchestrator's tier (Sonnet, Opus, etc.) is never invoked by the plugin.
 
