@@ -43,6 +43,33 @@ only the maintainer promotes selected issues to tips via
   and runtime-derives the topic list from `manifest.json` via grep+sed.
   No `jq`, no `python3`, no `node` runtime dependencies.
 
+## Versioning discipline (READ BEFORE COMMITTING)
+
+The plugin's version lives in `plugin/.claude-plugin/plugin.json`. Per Claude
+Code: _"If `version` is set, users only receive updates when you bump it."_
+Without a bump, `/plugin marketplace update juanwmedia-cc-tips` will NOT pull
+your change for installed users — they will keep running the previous version.
+
+**Bump on every commit that touches any of**:
+- `plugin/skills/**` (any SKILL.md change, including footer/copy edits)
+- `plugin/hooks/**` (any hook script or `.md` payload change)
+- `plugin/manifest.json` (new tip, new field, schema change)
+- `plugin/.claude-plugin/plugin.json` itself
+- `tips/**` IS NOT bundled (post-restructure), so tip-content fixes do NOT
+  require a version bump. Users get them on next `/cc-tips:open` via curl.
+
+**Semver guidance**:
+- Patch (`1.x.Y`): bug fix, copy fix, doc tweak inside a skill body.
+- Minor (`1.X.0`): new feature, new skill, new tip in manifest, behaviour
+  change that is backwards-compatible for existing users.
+- Major (`X.0.0`): breaking change in install layout, manifest schema, or
+  user-facing command surface.
+
+**Auto-publish (`/claude-code-tip` Step 11) must also bump.** When that flow
+adds a new entry to `manifest.json`, it should also bump the minor version
+of `plugin/.claude-plugin/plugin.json` and include the bump in the same
+commit. (This is a TODO for the `/claude-code-tip` skill in `ai-infra`.)
+
 ## Related repos
 
 - `juanwmedia/ai-infra` — hosts `/claude-code-tip` (publish flow, source of
