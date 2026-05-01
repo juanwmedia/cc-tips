@@ -38,9 +38,13 @@ Format per topic:
 - Tips whose id is in `read_tips`: `✓ read`. Otherwise: `unread`.
 - Translate the column headers (`ID`, `Title`, `Status`) and the status word `unread` to the working language. Keep tip titles as authored in the manifest.
 
-5. Append a one-line update reminder, in the working language:
+5. Append two one-line footers, in the working language:
 
+> Run `/cc-tips:open <ID>` to read a tip.
+>
 > _To get new tips, enable auto-update in `/plugin marketplace` or run `/plugin marketplace update cc-tips` periodically._
+
+Translate the first line to the working language (e.g., Spanish: "Ejecuta `/cc-tips:open <ID>` para leer un tip."). Keep the slash command and the literal placeholder `<ID>`.
 
 ## Notes
 
