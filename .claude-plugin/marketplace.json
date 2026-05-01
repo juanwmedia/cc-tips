@@ -1,0 +1,14 @@
+{
+  "name": "juanwmedia-cc-tips",
+  "owner": {
+    "name": "Juan Andrés Núñez",
+    "url": "https://wmedia.es"
+  },
+  "plugins": [
+    {
+      "name": "cc-tips",
+      "source": "./",
+      "description": "Surfaces wmedia.es Claude Code tips contextually inside the session, with on-the-fly translation for non-ES/EN languages."
+    }
+  ]
+}
