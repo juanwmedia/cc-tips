@@ -605,6 +605,50 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-allowlist-automatica-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fewer-permission-prompts-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 56,
+      "slug": "claude-code-init-interactive-flow",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "/init en Claude Code: mucho más que un CLAUDE.md de plantilla",
+      "title_en": "/init in Claude Code: way more than a CLAUDE.md template",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-init-flujo-interactivo-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-init-interactive-flow-en.md",
+      "contributed_by_github_username": null
+    },
+    {
+      "id": 57,
+      "slug": "claude-code-humanizer-skill",
+      "topic": "skills",
+      "version": 1,
+      "title_es": "El skill humanizador en Claude Code: para que tu texto deje de oler a IA",
+      "title_en": "The humanizer skill in Claude Code: stop your text from smelling like AI",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-humanizador-skill-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-humanizer-skill-en.md",
+      "contributed_by_github_username": null
+    },
+    {
+      "id": 58,
+      "slug": "claude-code-free-real-paths",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "¿Claude Code gratis? La trampa del 'plan free' y las 2 vías reales",
+      "title_en": "Claude Code free? The 'free plan' trap and 2 real paths",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-gratis-vias-reales-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-free-real-paths-en.md",
+      "contributed_by_github_username": null
+    },
+    {
+      "id": 59,
+      "slug": "claude-code-insights-command",
+      "topic": "memory-context",
+      "version": 1,
+      "title_es": "/insights en Claude Code: tu radiografía de uso (con reglas CLAUDE.md de regalo)",
+      "title_en": "/insights in Claude Code: your usage X-ray (with CLAUDE.md rules as a bonus)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-comando-insights-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-insights-command-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
