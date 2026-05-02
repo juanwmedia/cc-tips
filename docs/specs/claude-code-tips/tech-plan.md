@@ -1,9 +1,9 @@
 ---
 title: "Claude Code Tips Plugin — Technical Plan"
 status: approved
-based_on_spec_version: 1
+based_on_spec_version: 4
 created: 2026-04-28
-last_updated: 2026-04-28
+last_updated: 2026-05-02
 ---
 
 # Claude Code Tips Plugin — Technical Plan
@@ -116,71 +116,72 @@ This is a forward-compatible field addition not present in the spec. To be recon
 ## Tasks
 
 ### Batch 1: plugin scaffold (parallel, mechanical — haiku)
-- [ ] **T1**: Create `.claude-plugin/plugin.json` with name, description (~118 chars), version `1.0.0`, author.
+- [x] **T1**: Create `.claude-plugin/plugin.json` with name, description (~118 chars), version `1.0.0`, author.
   - **File**: `~/code/cc-tips/.claude-plugin/plugin.json`
   - **Covers**: foundational
-- [ ] **T2**: Create top-level `README.md` (public-facing usage doc).
+- [x] **T2**: Create top-level `README.md` (public-facing usage doc).
   - **File**: `~/code/cc-tips/README.md`
   - **Covers**: foundational
-- [ ] **T3**: Create `LICENSE` (MIT).
+- [x] **T3**: Create `LICENSE` (MIT).
   - **File**: `~/code/cc-tips/LICENSE`
   - **Covers**: foundational
-- [ ] **T4**: Create `.gitignore` (ignore local cache, OS detritus).
+- [x] **T4**: Create `.gitignore` (ignore local cache, OS detritus).
   - **File**: `~/code/cc-tips/.gitignore`
   - **Covers**: foundational
 
 ### Batch 2: skills (parallel — sonnet)
-- [ ] **T5**: Write `skills/cc-tips/SKILL.md` (auto-invocable). Description ~118 chars. Body: organic surface logic, daily cap, read-marker check, language detection, attribution rendering reference.
+- [~] **T5** (superseded by B2): Write `skills/cc-tips/SKILL.md` (auto-invocable). Description ~118 chars. Body: organic surface logic, daily cap, read-marker check, language detection, attribution rendering reference.
   - **File**: `~/code/cc-tips/skills/cc-tips/SKILL.md`
   - **Covers**: AC-1, AC-2, AC-3, AC-5, AC-12, AC-13
-- [ ] **T6**: Write `skills/list/SKILL.md` with `disable-model-invocation: true`. Body: render manifest as table grouped by topic, mark read/unread, optional topic filter, update reminder footer.
+  - **Status**: removed during build. Replaced by SessionStart hook (`hooks/welcome.sh` + `hooks/topic-awareness.md`). Same ACs are now covered by the hook's injected `additionalContext`. See iteration log B2 for rationale.
+- [x] **T6**: Write `skills/list/SKILL.md` with `disable-model-invocation: true`. Body: render manifest as table grouped by topic, mark read/unread, optional topic filter, update reminder footer.
   - **File**: `~/code/cc-tips/skills/list/SKILL.md`
   - **Covers**: AC-6, AC-7
-- [ ] **T7**: Write `skills/open/SKILL.md` with `disable-model-invocation: true`. Body: cache check, curl fetch on miss/version-mismatch, attribution line if present, update reminder footer, error handling.
+- [x] **T7**: Write `skills/open/SKILL.md` with `disable-model-invocation: true`. Body: cache check, curl fetch on miss/version-mismatch, attribution line if present, update reminder footer, error handling.
   - **File**: `~/code/cc-tips/skills/open/SKILL.md`
   - **Covers**: AC-4, AC-8, AC-9, AC-10
-- [ ] **T8**: Write `skills/share/SKILL.md` with `disable-model-invocation: true`. Body: draft from context, `gh issue create` primary, web URL fallback, contributor username from `gh api user --jq .login` when available.
+- [x] **T8**: Write `skills/share/SKILL.md` with `disable-model-invocation: true`. Body: draft from context, `gh issue create` primary, web URL fallback, contributor username from `gh api user --jq .login` when available.
   - **File**: `~/code/cc-tips/skills/share/SKILL.md`
   - **Covers**: AC-11
-- [ ] **T9**: Write `skills/welcome/SKILL.md` with `disable-model-invocation: true`. Body: emit welcome message regardless of `first_seen_at`.
+- [x] **T9**: Write `skills/welcome/SKILL.md` with `disable-model-invocation: true`. Body: emit welcome message regardless of `first_seen_at`.
   - **File**: `~/code/cc-tips/skills/welcome/SKILL.md`
   - **Covers**: AC-15
 
 ### Batch 3: hooks (sequential within batch, parallel with batch 2 — haiku)
-- [ ] **T10**: Write `hooks/welcome.sh` per D6 (reads/creates progress.json, emits welcome additionalContext if first_seen_at null, atomically sets first_seen_at).
+- [x] **T10**: Write `hooks/welcome.sh` per D6 (reads/creates progress.json, emits welcome additionalContext if first_seen_at null, atomically sets first_seen_at).
   - **File**: `~/code/cc-tips/hooks/welcome.sh`
   - **Covers**: AC-14
-- [ ] **T11**: Write `hooks/hooks.json` (SessionStart event runs `bash "${CLAUDE_PLUGIN_ROOT}/hooks/welcome.sh"`).
+- [x] **T11**: Write `hooks/hooks.json` (SessionStart event runs `bash "${CLAUDE_PLUGIN_ROOT}/hooks/welcome.sh"`).
   - **File**: `~/code/cc-tips/hooks/hooks.json`
   - **Covers**: AC-14
-- [ ] **T12**: `chmod +x hooks/welcome.sh`.
+- [x] **T12**: `chmod +x hooks/welcome.sh`.
   - **Covers**: AC-14
 
 ### Batch 4: port orchestration script (sonnet)
-- [ ] **T13**: Write `scripts/port-corpus.py`. Mechanical only — pairs files by frontmatter `(title_es, title_en)`, runs ONE `ssh forge@frontendleap.com "sqlite3 ... 'SELECT slug_en, slug_es, hub_topic FROM tips'"` to fetch topic mapping, writes `pair-index.json` (the input fed to workers) and later `manifest.json` (the output assembled from cleaned files). NO content transformation in this script.
+- [x] **T13**: Write `scripts/port-corpus.py`. Mechanical only — pairs files by frontmatter `(title_es, title_en)`, runs ONE `ssh forge@frontendleap.com "sqlite3 ... 'SELECT slug_en, slug_es, hub_topic FROM tips'"` to fetch topic mapping, writes `pair-index.json` (the input fed to workers) and later `manifest.json` (the output assembled from cleaned files). NO content transformation in this script.
   - **File**: `~/code/cc-tips/scripts/port-corpus.py`
   - **Covers**: build-time orchestration
 
 ### Batch 5: initial port — content transformation by LLM workers (sequential after batch 4)
-- [ ] **T14**: Run `python3 scripts/port-corpus.py --pair` to produce `~/code/cc-tips/.port/pair-index.json` (the 55 pairs with source paths + DB topic for each).
+- [x] **T14**: Run `python3 scripts/port-corpus.py --pair` to produce `~/code/cc-tips/.port/pair-index.json` (the 55 pairs with source paths + DB topic for each).
   - **Output**: `.port/pair-index.json`
   - **Covers**: data prep
-- [ ] **T15**: Spawn 6 worker subagents (general-purpose, sonnet) in parallel. Each gets ~9-10 pairs from `pair-index.json` and produces cleaned `~/code/cc-tips/tips/<slug>-{es,en}.md` per pair. Workers apply the D2 working rules with judgment. Each returns: list of files written + concerns.
+- [x] **T15**: Spawn 6 worker subagents (general-purpose, sonnet) in parallel. Each gets ~9-10 pairs from `pair-index.json` and produces cleaned `~/code/cc-tips/tips/<slug>-{es,en}.md` per pair. Workers apply the D2 working rules with judgment. Each returns: list of files written + concerns.
   - **Output**: `~/code/cc-tips/tips/*.md` (110 files, two per pair)
   - **Covers**: AC-1, AC-6, AC-7, AC-8 (initial content)
-- [ ] **T16**: Run `python3 scripts/port-corpus.py --manifest` to assemble `manifest.json` by reading frontmatter + content from the cleaned files in `tips/`, joining with topic data, assigning ids 1..55 by date order.
+- [x] **T16**: Run `python3 scripts/port-corpus.py --manifest` to assemble `manifest.json` by reading frontmatter + content from the cleaned files in `tips/`, joining with topic data, assigning ids 1..55 by date order.
   - **Output**: `~/code/cc-tips/manifest.json`
   - **Covers**: AC-1 (manifest readiness)
-- [ ] **T17**: Verify port: 55 entries in manifest, every entry has both `tips/<slug>-es.md` and `tips/<slug>-en.md` on disk, every entry's topic is a valid HubTopic value.
+- [x] **T17**: Verify port: 55 entries in manifest, every entry has both `tips/<slug>-es.md` and `tips/<slug>-en.md` on disk, every entry's topic is a valid HubTopic value.
   - **Covers**: validation
 
 ### Batch 6: auto-publish wiring (sonnet)
-- [ ] **T18**: Add Step 11 to `~/.claude/skills/claude-code-tip/SKILL.md` per D8.
+- [x] **T18**: Add Step 11 to `~/.claude/skills/claude-code-tip/SKILL.md` per D8.
   - **File**: `~/.claude/skills/claude-code-tip/SKILL.md`
   - **Covers**: AC-16, AC-17
 
 ### Batch 7: local validation
-- [ ] **T19**: Run `claude --plugin-dir ~/code/cc-tips`. Smoke test: welcome appears in fresh session; `/cc-tips:list` returns table; `/cc-tips:open 1` fetches+caches+displays; `/cc-tips:welcome` re-triggers welcome.
+- [x] **T19**: Run `claude --plugin-dir ~/code/cc-tips`. Smoke test: welcome appears in fresh session; `/cc-tips:list` returns table; `/cc-tips:open 1` fetches+caches+displays; `/cc-tips:welcome` re-triggers welcome.
   - **Covers**: integration smoke test for AC-1 through AC-15
 
 ## Cross-Feature Discoveries
@@ -203,6 +204,17 @@ This is a forward-compatible field addition not present in the spec. To be recon
 - **Effect on user updates**: tip content fixes (typos, broken links, content corrections) propagate without `/plugin marketplace update`. New tips added to the manifest still require an update so they appear in `/cc-tips:list`, but that was always the case.
 - **AC coverage**: no change. AC-8/AC-9/AC-13b were already accurate (curl + cache), so no spec edits are needed. `spec_version` is not bumped.
 - **Migration risk**: users with the plugin already installed will re-clone on their next `/plugin marketplace update`. Their old install cache may keep stale `tips/` content on disk; harmless because `open` always curls.
+
+### B8 — 2026-05-02 — Operational refinements (1.2.1–1.2.5) + Releases policy
+- **1.2.1**: `list/SKILL.md` combined into one Bash invocation. Shell variables don't persist between Bash tool calls, so the previous two-step (read progress, then jq) was producing empty results.
+- **1.2.2**: `list/SKILL.md` got an imperative directive — the Bash output is RAW DATA (TSV) for the model's eyes only; the model MUST render the markdown table as its response text. Without this, Haiku was treating the TSV as the final answer.
+- **1.2.3**: `open/SKILL.md` strips YAML frontmatter before render and skips it during translation. Frontmatter is build-pipeline metadata, not user-facing content.
+- **1.2.4**: `open/SKILL.md` footer now includes a `/cc-tips:share` hint alongside the update reminder. Discovery surface for the contribution loop.
+- **1.2.5**: backfilled 4 tips published to wmedia.es between 2026-04-29 and 2026-05-02 that had not yet been synced (init-interactive-flow, humanizer-skill, free-real-paths, insights-command). Manifest now at 59 entries. One bump for the bulk catch-up rather than four (intermediate versions never existed in any commit).
+- **Versioning rule clarified**: a new tip in the manifest is a **patch** bump, not minor. Updated CLAUDE.md and `/claude-code-tip` Step 11c (in `ai-infra`) accordingly. Reasoning: a tip is a content addition, not a feature; minor would inflate the version absurdly fast (50 tips → 1.55.0).
+- **GitHub Releases policy added** (CLAUDE.md): Releases are not the install mechanism — `/plugin marketplace update` reads `plugin.json` from `main`. Releases exist purely as a curated changelog. **Cut a release for every minor and major; skip patches.** Patches accumulate in the next minor's notes.
+- **v1.2.0 release published retroactively** at the foundational commit (jq + lean schema + restructure). https://github.com/juanwmedia/cc-tips/releases/tag/v1.2.0
+- **AC change**: AC-16 updated to mention the patch bump as part of the auto-publish flow. `spec_version: 3 → 4`.
 
 ### B7 — 2026-05-01 — Embrace jq, prune manifest schema
 - **Problem**: skills used `Read` tool to load `manifest.json` (76 KB → ~25 K input tokens) on every list/open. Haiku, given globally-permitted `Bash(jq *)`, kept routing around the directive and using `cat | jq` (~100 tokens). Forcing Read on a 76 KB JSON blob was costing ~250× more tokens per call than the alternative the model wanted to use.

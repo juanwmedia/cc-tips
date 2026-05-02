@@ -2,7 +2,7 @@ project: cc-tips
 features:
   - name: cc-tips
     title: Claude Code Tips Plugin
-    status: in-progress
+    status: done
     priority: P1
-    spec_version: 1
+    spec_version: 4
     depends-on: []

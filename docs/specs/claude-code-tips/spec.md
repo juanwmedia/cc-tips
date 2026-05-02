@@ -1,9 +1,9 @@
 ---
 title: "Claude Code Tips Plugin"
 status: approved
-spec_version: 3
+spec_version: 4
 created: 2026-04-28
-last_updated: 2026-05-01
+last_updated: 2026-05-02
 ---
 
 # Claude Code Tips Plugin
@@ -55,39 +55,39 @@ so users stay current without plugin version bumps.
 
 ### Discovery
 
-1. GIVEN the user is working on a topic that an unread tip covers, WHEN the
+1. <!-- verified --> GIVEN the user is working on a topic that an unread tip covers, WHEN the
    skill detects the topic match, THEN it surfaces one tip (the most
    relevant) with its id, topic, one-line summary, and the command to open
    it (`/cc-tips:open <N>`).
-2. GIVEN a tip on topic T has already been surfaced organically in the
+2. <!-- verified --> GIVEN a tip on topic T has already been surfaced organically in the
    current session, WHEN further matches on topic T occur in the same session,
    THEN no new organic surface is emitted for T. Different topics each get
    their own once-per-session trigger.
-3. GIVEN no unread tips match the current context, WHEN matches are evaluated,
+3. <!-- verified --> GIVEN no unread tips match the current context, WHEN matches are evaluated,
    THEN no organic surface is emitted.
 
 ### Read marker
 
-4. GIVEN the user runs `/cc-tips:open <N>`, WHEN tip N exists in the
+4. <!-- verified --> GIVEN the user runs `/cc-tips:open <N>`, WHEN tip N exists in the
    manifest, THEN the tip's markdown is fetched (cache or curl), rendered in
    the response, and N is appended to `read_tips` in `progress.json`.
-5. GIVEN tip N is in `read_tips`, WHEN the skill evaluates organic surface
+5. <!-- verified --> GIVEN tip N is in `read_tips`, WHEN the skill evaluates organic surface
    candidates, THEN tip N is permanently excluded.
 
 ### Listing
 
-6. GIVEN the user runs `/cc-tips:list`, WHEN invoked with no
+6. <!-- verified --> GIVEN the user runs `/cc-tips:list`, WHEN invoked with no
    argument, THEN all tips are listed grouped by topic with their id, title in
    the user's language, and a marker indicating read or unread. The output
    ends with a one-line reminder to keep the plugin updated.
-7. GIVEN the user runs `/cc-tips:list <topic>`, WHEN the topic value
+7. <!-- verified --> GIVEN the user runs `/cc-tips:list <topic>`, WHEN the topic value
    matches a known topic from the hub taxonomy, THEN only tips in that topic
    are listed (with the same update reminder); if it doesn't match, an error
    lists the valid topics.
 
 ### Open
 
-8. GIVEN tip N is in the manifest, WHEN the user runs
+8. <!-- verified --> GIVEN tip N is in the manifest, WHEN the user runs
    `/cc-tips:open <N>` and the cached file matches the manifest's
    version, THEN the cache is read; if the cache is missing or version
    mismatches, `curl` fetches from `raw.githubusercontent.com` and saves to
@@ -96,16 +96,16 @@ so users stay current without plugin version bumps.
    @username", with a link to the user's GitHub profile) is appended after
    the tip content. The rendered output ends with a one-line reminder to
    keep the plugin updated.
-9. GIVEN the network or the GitHub raw URL is unavailable, WHEN the curl
+9. <!-- verified --> GIVEN the network or the GitHub raw URL is unavailable, WHEN the curl
    fails, THEN the user receives an error explaining the cause and suggesting
    retry; `read_tips` is not modified.
-10. GIVEN tip N is not in the manifest, WHEN the user runs `/open <N>`, THEN
+10. <!-- verified --> GIVEN tip N is not in the manifest, WHEN the user runs `/open <N>`, THEN
     the user receives "Tip N not found. Run `/cc-tips:list` to see
     available tips."
 
 ### Share
 
-11. GIVEN the user runs `/cc-tips:share`, WHEN the skill activates,
+11. <!-- verified --> GIVEN the user runs `/cc-tips:share`, WHEN the skill activates,
     THEN it drafts an issue from recent conversation context (proposed title,
     body, suggested topic), presents it to the user for review, and on
     approval: tries `gh issue create --repo juanwmedia/cc-tips
@@ -117,15 +117,15 @@ so users stay current without plugin version bumps.
 
 ### Language fallback
 
-12. GIVEN the user's recent prompts are in Spanish, WHEN the plugin surfaces
+12. <!-- verified --> GIVEN the user's recent prompts are in Spanish, WHEN the plugin surfaces
     or responds, THEN the conversational layer is in Spanish and tip content
     is served from the curated `<slug>-es-v<version>.md` cache (fetched from
     `url_es` on cache miss).
-13. GIVEN the user's recent prompts are in English, WHEN the plugin surfaces
+13. <!-- verified --> GIVEN the user's recent prompts are in English, WHEN the plugin surfaces
     or responds, THEN the conversational layer is in English and tip content
     is served from the curated `<slug>-en-v<version>.md` cache (fetched from
     `url_en` on cache miss).
-13b. GIVEN the user's recent prompts are in any language other than Spanish
+13b. <!-- verified --> GIVEN the user's recent prompts are in any language other than Spanish
     or English (Italian, French, Portuguese, German, …), WHEN the plugin
     surfaces or responds, THEN the conversational layer is in that language;
     when `/cc-tips:open <N>` runs, the EN source is fetched, the open skill
@@ -137,7 +137,7 @@ so users stay current without plugin version bumps.
 
 ### Welcome
 
-14. GIVEN the SessionStart hook runs and the flag file
+14. <!-- verified --> GIVEN the SessionStart hook runs and the flag file
     `${CLAUDE_PLUGIN_DATA}/first_seen` does not exist, WHEN the user starts
     a Claude Code session, THEN before any other plugin output the welcome
     message is presented. It lists `/cc-tips:list`,
@@ -145,19 +145,22 @@ so users stay current without plugin version bumps.
     the contextual recommendations behavior, and ends with "You won't see this
     auto-message again." After presentation, the flag file is created so
     subsequent sessions do not show it again.
-15. GIVEN the user runs `/cc-tips:welcome`, WHEN invoked, THEN the
+15. <!-- verified --> GIVEN the user runs `/cc-tips:welcome`, WHEN invoked, THEN the
     welcome message is presented regardless of `first_seen_at`.
 
 ### Auto-publish (touches `/claude-code-tip` in `ai-infra`)
 
-16. GIVEN the user (the maintainer) runs `/claude-code-tip` and the wmedia.es
+16. <!-- verified --> GIVEN the user (the maintainer) runs `/claude-code-tip` and the wmedia.es
     publish succeeds, WHEN the existing flow finishes, THEN a final step
     transforms the tip's markdown for terminal rendering (strips image tags,
     HTML, anything not renderable in plain terminal output), writes it to
-    `~/code/cc-tips/tips/<slug>-{es,en}.md`, appends a manifest
-    entry with the next stable id, commits, and pushes to
-    `juanwmedia/cc-tips`.
-17. GIVEN the auto-publish step fails (network, conflict, auth), WHEN the
+    `~/code/cc-tips/tips/<slug>-{es,en}.md`, appends a manifest entry with
+    the next stable id, **bumps the patch version of
+    `plugin/.claude-plugin/plugin.json`** (per the versioning discipline in
+    `CLAUDE.md`: a new tip is a content addition = patch bump), commits, and
+    pushes to `juanwmedia/cc-tips` in a single commit covering all three
+    changes.
+17. <!-- verified --> GIVEN the auto-publish step fails (network, conflict, auth), WHEN the
     underlying wmedia.es publish has succeeded, THEN the user is informed and
     given manual recovery steps; the wmedia.es publish is NOT rolled back.
 
