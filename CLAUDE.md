@@ -69,16 +69,17 @@ your change for installed users — they will keep running the previous version.
   require a version bump. Users get them on next `/cc-tips:open` via curl.
 
 **Semver guidance**:
-- Patch (`1.x.Y`): bug fix, copy fix, doc tweak inside a skill body.
-- Minor (`1.X.0`): new feature, new skill, new tip in manifest, behaviour
-  change that is backwards-compatible for existing users.
+- Patch (`1.x.Y`): bug fix, copy fix, doc tweak inside a skill body, **new
+  tip added to the manifest** (content addition, not a feature).
+- Minor (`1.X.0`): new feature, new skill, new hook, behaviour change that
+  is backwards-compatible for existing users.
 - Major (`X.0.0`): breaking change in install layout, manifest schema, or
   user-facing command surface.
 
 **Auto-publish (`/claude-code-tip` Step 11) must also bump.** When that flow
-adds a new entry to `manifest.json`, it should also bump the minor version
-of `plugin/.claude-plugin/plugin.json` and include the bump in the same
-commit. (This is a TODO for the `/claude-code-tip` skill in `ai-infra`.)
+adds a new entry to `manifest.json`, it should also bump the **patch**
+version of `plugin/.claude-plugin/plugin.json` and include the bump in the
+same commit.
 
 ## Related repos
 
