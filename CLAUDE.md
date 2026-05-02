@@ -81,6 +81,25 @@ adds a new entry to `manifest.json`, it should also bump the **patch**
 version of `plugin/.claude-plugin/plugin.json` and include the bump in the
 same commit.
 
+## GitHub Releases policy
+
+GitHub Releases are **not** the install mechanism — `/plugin marketplace
+update` reads `plugin/.claude-plugin/plugin.json` from `main`, not release
+artifacts. Releases here exist purely as a curated changelog for users who
+want to follow the project.
+
+**Cut a release for every MINOR and MAJOR. Skip PATCHES.** A new tip is a
+patch and should not produce its own release; that would be release noise.
+Patches accumulate in the next minor's notes.
+
+```bash
+gh release create vX.Y.Z --title "vX.Y.Z — <one-line summary>" \
+  --notes "..." --target <commit-sha>
+```
+
+The notes should group changes by section (Features / Skills / Hooks /
+Schema / Tips since previous minor) and link to the commit range.
+
 ## Related repos
 
 - `juanwmedia/ai-infra` — hosts `/claude-code-tip` (publish flow, source of
