@@ -649,6 +649,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-comando-insights-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-insights-command-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 60,
+      "slug": "claude-code-batch-parallel-refactor",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "/batch en Claude Code: parte un refactor masivo en 30 agentes paralelos, uno por PR",
+      "title_en": "/batch in Claude Code: split a massive refactor across 30 parallel agents, one PR each",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-batch-refactor-paralelo-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-batch-parallel-refactor-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
