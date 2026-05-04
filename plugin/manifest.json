@@ -660,6 +660,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-batch-refactor-paralelo-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-batch-parallel-refactor-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 61,
+      "slug": "claude-code-session-recap-resume-context",
+      "topic": "sessions",
+      "version": 1,
+      "title_es": "Session recap en Claude Code: vuelve a tu terminal y la sesión ya sabe por dónde ibas",
+      "title_en": "Session recap in Claude Code: come back to your terminal and your session remembers where you left off",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-session-recap-resumen-sesion-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-session-recap-resume-context-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
