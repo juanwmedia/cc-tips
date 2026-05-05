@@ -671,6 +671,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-session-recap-resumen-sesion-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-session-recap-resume-context-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 62,
+      "slug": "claude-code-monitor-tool-event-driven",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "Monitor en Claude Code: tu agente reacciona cuando algo pasa, no cada 30 segundos",
+      "title_en": "Monitor in Claude Code: your agent reacts when something happens, not every 30 seconds",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-monitor-eventos-tiempo-real-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-monitor-tool-event-driven-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
