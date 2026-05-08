@@ -704,6 +704,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-loop-routines-monitor-mapa-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-loop-routines-monitor-map-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 65,
+      "slug": "claude-code-custom-themes",
+      "topic": "plugins",
+      "version": 1,
+      "title_es": "Crea y distribuye temas personalizados con Claude Code",
+      "title_en": "Create and distribute custom themes with Claude Code",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-custom-themes-paleta-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-custom-themes-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
