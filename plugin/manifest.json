@@ -748,6 +748,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-slash-commands-cheatsheet-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-slash-commands-cheat-sheet-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 69,
+      "slug": "claude-code-github-actions-pr-review",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "Claude Code en tu GitHub: revisa PRs, arregla issues y crea código sin abrir la terminal",
+      "title_en": "Claude Code on GitHub: review PRs, fix issues, ship code without opening your terminal",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-github-actions-revisar-prs-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-github-actions-pr-review-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
