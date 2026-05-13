@@ -759,6 +759,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-github-actions-revisar-prs-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-github-actions-pr-review-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 70,
+      "slug": "claude-code-goal-stop-condition",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "/goal en Claude Code: define la condición de parada y vete a otra cosa",
+      "title_en": "/goal in Claude Code: set the stop condition and walk away",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-goal-condicion-parada-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-goal-stop-condition-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
