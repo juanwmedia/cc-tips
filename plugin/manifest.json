@@ -770,6 +770,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-goal-condicion-parada-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-goal-stop-condition-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 71,
+      "slug": "claude-code-agent-view-parallel-sessions",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "Agent View en Claude Code: una sola pantalla para todos los agentes que has lanzado",
+      "title_en": "Agent View in Claude Code: one screen for every agent you've dispatched",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-view-sesiones-paralelas-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-view-parallel-sessions-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
