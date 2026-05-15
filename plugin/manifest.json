@@ -781,6 +781,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-view-sesiones-paralelas-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-view-parallel-sessions-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 72,
+      "slug": "claude-code-best-mcp-servers",
+      "topic": "mcp",
+      "version": 1,
+      "title_es": "Servidores MCP en Claude Code: cinco bastan, cincuenta estorban",
+      "title_en": "MCP Servers in Claude Code: five is enough, fifty just slows the agent down",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mejores-servidores-mcp-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-best-mcp-servers-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
