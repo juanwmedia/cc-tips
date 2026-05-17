@@ -803,6 +803,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-agent-sdk-claude-code-desde-tu-codigo-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-agent-sdk-build-agents-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 74,
+      "slug": "claude-code-how-to-update",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Cómo actualizar Claude Code (depende de cómo lo instalaste)",
+      "title_en": "How to update Claude Code (depends on how you installed it)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-actualizar-version-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-how-to-update-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
