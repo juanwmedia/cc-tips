@@ -836,6 +836,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-plan-mode-obliga-entender-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-plan-mode-forces-you-to-think-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 77,
+      "slug": "claude-code-frontend-design-skill",
+      "topic": "skills",
+      "version": 1,
+      "title_es": "Frontend Design Skill: por qué tus UIs en Claude Code siguen pareciendo generadas por IA",
+      "title_en": "Frontend Design Skill: why your Claude Code UIs still look AI-generated",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-skill-frontend-design-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-frontend-design-skill-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
