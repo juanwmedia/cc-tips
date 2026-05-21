@@ -847,6 +847,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-skill-frontend-design-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-frontend-design-skill-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 78,
+      "slug": "claude-code-figma-chrome-mcp-pixel-perfect",
+      "topic": "mcp",
+      "version": 1,
+      "title_es": "Figma + Chrome MCP en Claude Code: el agente que busca el pixel perfect",
+      "title_en": "Figma + Chrome MCP in Claude Code: the agent chasing pixel perfect",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-figma-chrome-mcp-pixel-perfect-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-figma-chrome-mcp-pixel-perfect-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
