@@ -858,6 +858,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-figma-chrome-mcp-pixel-perfect-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-figma-chrome-mcp-pixel-perfect-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 79,
+      "slug": "claude-code-router-any-model",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "Claude Code Router: el truco que abarata Claude Code (con el trade-off que nadie cuenta)",
+      "title_en": "Claude Code Router: the trick to cheaper Claude Code (with the trade-off nobody mentions)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-router-modelos-alternativos-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-router-any-model-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
