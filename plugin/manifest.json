@@ -869,6 +869,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-router-modelos-alternativos-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-router-any-model-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 80,
+      "slug": "claude-code-background-agents-map",
+      "topic": "autonomous",
+      "version": 1,
+      "title_es": "Background agents en Claude Code: el mapa de las cuatro formas de dejar de mirar la terminal",
+      "title_en": "Background agents in Claude Code: the map of four ways to stop watching the terminal",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-background-agents-mapa-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-background-agents-map-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
