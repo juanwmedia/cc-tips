@@ -880,6 +880,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-background-agents-mapa-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-background-agents-map-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 81,
+      "slug": "claude-code-create-skills-anthropic-rules",
+      "topic": "skills",
+      "version": 1,
+      "title_es": "Crear skills en Claude Code: las 5 reglas que Anthropic publica (con ejemplos reales)",
+      "title_en": "Creating Claude Code skills: the 5 rules Anthropic publishes (with real examples)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-crear-skills-5-reglas-anthropic-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-create-skills-anthropic-rules-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
