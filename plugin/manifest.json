@@ -891,6 +891,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-crear-skills-5-reglas-anthropic-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-create-skills-anthropic-rules-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 82,
+      "slug": "claude-code-run-verify-app",
+      "topic": "skills",
+      "version": 1,
+      "title_es": "/run y /verify en Claude Code: verificar ejecutando tu app, no solo pasando tests",
+      "title_en": "/run and /verify in Claude Code: verify by running your app, not just passing tests",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-run-verify-ejecutar-app-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-run-verify-app-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
