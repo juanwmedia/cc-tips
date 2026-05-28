@@ -920,7 +920,7 @@
       "topic": "plugins",
       "version": 1,
       "title_es": "LSP en Claude Code: la navegación de código que tienes apagada sin saberlo",
-      "title_en": "LSP in Claude Code: the code navigation you have switched off without knowing",
+      "title_en": "LSP in Claude Code: the code navigation you don't know is switched off",
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-lsp-code-intelligence-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-lsp-code-intelligence-en.md",
       "contributed_by_github_username": null
