@@ -935,6 +935,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-workflows-subagentes-a-escala-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-workflows-subagents-at-scale-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 86,
+      "slug": "claude-code-config-precedence-who-wins",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Cuando CLAUDE.md, skills y MCP chocan en Claude Code: ¿cuál gana?",
+      "title_en": "When CLAUDE.md, skills, and MCP collide in Claude Code: which one wins?",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-precedencia-config-quien-gana-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-config-precedence-who-wins-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
