@@ -957,6 +957,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-ctrl-r-historial-prompts-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-ctrl-r-prompt-history-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 88,
+      "slug": "claude-code-diff-changes-per-turn",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "/diff en Claude Code: mira qué tocó Claude en cada turno, sin salir del terminal",
+      "title_en": "/diff in Claude Code: inspect what Claude touched on every turn, without leaving the terminal",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-diff-cambios-por-turno-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-diff-changes-per-turn-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
