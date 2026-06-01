@@ -8,7 +8,7 @@ title_en: "Control Claude Code from Telegram or Discord with Channels"
 
 > **TL;DR** Claude Code now accepts messages from Telegram and Discord while working in your terminal. Text it from your phone, it executes, and replies through the same channel. Bidirectional, secure (sender allowlist), activated with `--channels`.
 
-Channels is a system that pushes external events into your Claude Code session via an MCP server. Telegram, Discord, or any service you implement. Claude reads the message, acts with all its tools (bash, editing, reading, subagents), and replies through the same channel.
+Channels is a system that pushes external events into your Claude Code session via an MCP server. Telegram, Discord, iMessage, or any service you implement. Claude reads the message, acts with all its tools (bash, editing, reading, subagents), and replies through the same channel.
 
 If this sounds like what [OpenClaw](https://openclaw.ai/) does — an AI assistant that lives in your chat apps and executes tasks on your machine — it's no coincidence. Anthropic is building that same vision, but integrated natively into Claude Code: with access to [hooks](/en/writing/claude-code-hooks-practical-guide), [skills](/en/writing/claude-code-skills-custom-workflows), [subagents](/en/writing/claude-code-subagents-guide-ai), and MCP.
 
@@ -64,14 +64,14 @@ The second line locks access to your account only.
 | Aspect | Detail |
 |---|---|
 | What it is | MCP server that pushes events into your session |
-| Supported channels | Telegram, Discord, fakechat (localhost demo) |
+| Supported channels | Telegram, Discord, iMessage, fakechat (localhost demo) |
 | Direction | Bidirectional — Claude reads and replies through the same channel |
 | Security | Sender allowlist + pairing code |
 | Activation flag | `--channels plugin:<name>@claude-plugins-official` |
 | Session required | Claude Code must be running (not a persistent service) |
 | Permissions | Permission prompts pause the session until you approve locally |
 | Status | Research preview (v2.1.80+) |
-| Authentication | claude.ai login only (no API key or Console) |
+| Authentication | claude.ai or a Console API key (not on Bedrock/Vertex/Foundry) |
 | Enterprise | Disabled by default — admin must enable `channelsEnabled` |
 
 > Official docs: [Channels — Push events into a running session](https://code.claude.com/docs/en/channels)
@@ -80,5 +80,5 @@ The second line locks access to your account only.
 
 - Claude Code v2.1.80+
 - [Bun](https://bun.sh) installed (`bun --version` to verify)
-- claude.ai login (API key not supported)
+- claude.ai login **or** a Console API key (enabled by default on Console)
 - Team/Enterprise: admin must enable channels in managed settings

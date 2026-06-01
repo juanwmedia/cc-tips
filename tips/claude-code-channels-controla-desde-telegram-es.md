@@ -8,7 +8,7 @@ title_en: "Control Claude Code from Telegram or Discord with Channels"
 
 > **TL;DR** Claude Code ahora acepta mensajes desde Telegram y Discord mientras trabaja en tu terminal. Le escribes desde el móvil, él ejecuta, y te responde por el mismo canal. Es bidireccional, seguro (allowlist de remitentes), y se activa con `--channels`.
 
-Channels es un sistema que empuja eventos externos a tu sesión de Claude Code a través de un MCP server. Telegram, Discord, o cualquier servicio que implementes. Claude lee el mensaje, actúa con todas sus herramientas (bash, edición, lectura, subagents), y responde por el mismo canal.
+Channels es un sistema que empuja eventos externos a tu sesión de Claude Code a través de un MCP server. Telegram, Discord, iMessage, o cualquier servicio que implementes. Claude lee el mensaje, actúa con todas sus herramientas (bash, edición, lectura, subagents), y responde por el mismo canal.
 
 Si te suena a lo que hace [OpenClaw](https://openclaw.ai/) — un asistente AI que vive en tus apps de chat y ejecuta tareas en tu máquina — no es coincidencia. Anthropic está construyendo esa misma visión, pero integrada nativamente en Claude Code: con acceso a [hooks](/es/articulos/claude-code-hooks-guia-practica), [skills](/es/articulos/claude-code-skills-flujos-trabajo-personalizados), [subagents](/es/articulos/claude-code-subagents-guia-espanol) y MCP.
 
@@ -64,14 +64,14 @@ La segunda línea bloquea a cualquiera que no seas tú.
 | Aspecto | Detalle |
 |---|---|
 | Qué es | MCP server que empuja eventos a tu sesión |
-| Canales soportados | Telegram, Discord, fakechat (demo localhost) |
+| Canales soportados | Telegram, Discord, iMessage, fakechat (demo localhost) |
 | Dirección | Bidireccional — Claude lee y responde por el mismo canal |
 | Seguridad | Allowlist de remitentes + código de emparejamiento |
 | Flag de activación | `--channels plugin:<nombre>@claude-plugins-official` |
 | Sesión requerida | Claude Code debe estar corriendo (no es un servicio persistente) |
 | Permisos | Los prompts de permisos pausan la sesión hasta que apruebes localmente |
 | Estado | Research preview (v2.1.80+) |
-| Autenticación | Solo claude.ai login (no API key ni Console) |
+| Autenticación | claude.ai o API key de Console (no en Bedrock/Vertex/Foundry) |
 | Enterprise | Desactivado por defecto — el admin debe habilitar `channelsEnabled` |
 
 > Documentación oficial: [Channels — Push events into a running session](https://code.claude.com/docs/en/channels)
@@ -80,5 +80,5 @@ La segunda línea bloquea a cualquiera que no seas tú.
 
 - Claude Code v2.1.80+
 - [Bun](https://bun.sh) instalado (`bun --version` para verificar)
-- Login con claude.ai (no funciona con API key)
+- Login con claude.ai **o** API key de Console (en Console, activo por defecto)
 - Team/Enterprise: el admin debe habilitar channels en managed settings
