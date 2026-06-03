@@ -990,6 +990,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-ultracode-orquestacion-automatica-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-ultracode-auto-orchestration-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 91,
+      "slug": "claude-code-security-guidance",
+      "topic": "plugins",
+      "version": 1,
+      "title_es": "Seguridad en Claude Code: que cace sus propias vulnerabilidades antes de que lleguen a prod",
+      "title_en": "Security in Claude Code: make it catch its own vulnerabilities before they hit prod",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-seguridad-vulnerabilidades-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-security-guidance-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
