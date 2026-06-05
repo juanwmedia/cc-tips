@@ -1012,6 +1012,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-prompt-caching-turno-lento-consumo-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-prompt-caching-slow-expensive-turns-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 93,
+      "slug": "claude-code-compact-what-survives",
+      "topic": "memory-context",
+      "version": 1,
+      "title_es": "/compact en Claude Code: las instrucciones que desaparecen sin avisar (y cómo hacerlas sobrevivir)",
+      "title_en": "/compact in Claude Code: the instructions that vanish without warning (and how to make them survive)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-compact-que-sobrevive-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-compact-what-survives-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
