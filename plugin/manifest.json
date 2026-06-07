@@ -1034,6 +1034,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-reanudar-sesiones-picker-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-resume-sessions-picker-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 95,
+      "slug": "claude-code-slow-hanging-memory-fixes",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Claude Code va lento, se cuelga o se come la RAM: la lista de fixes que no sabías que existían",
+      "title_en": "Claude Code slow, hanging, or eating your RAM: the fix list you didn't know existed",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-lento-cuelgues-memoria-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-slow-hanging-memory-fixes-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
