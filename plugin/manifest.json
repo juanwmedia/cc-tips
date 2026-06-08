@@ -1045,6 +1045,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-lento-cuelgues-memoria-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-slow-hanging-memory-fixes-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 96,
+      "slug": "claude-code-claudemd-settings-which-file",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "CLAUDE.md, settings.json o .mcp.json: ¿en qué archivo de Claude Code va cada cosa?",
+      "title_en": "CLAUDE.md, settings.json, or .mcp.json: which Claude Code file does this go in?",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-claudemd-settings-que-archivo-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-claudemd-settings-which-file-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
