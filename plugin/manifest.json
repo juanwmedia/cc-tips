@@ -1067,6 +1067,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sandbox-ejecutar-sin-permisos-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sandbox-run-without-prompts-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 98,
+      "slug": "claude-code-fable-5-above-opus",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "Fable 5 en Claude Code: el modelo nuevo que está por encima de Opus",
+      "title_en": "Fable 5 in Claude Code: the new model that sits above Opus",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-por-encima-de-opus-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-above-opus-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
