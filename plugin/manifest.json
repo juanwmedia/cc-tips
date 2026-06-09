@@ -1056,6 +1056,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-claudemd-settings-que-archivo-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-claudemd-settings-which-file-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 97,
+      "slug": "claude-code-sandbox-run-without-prompts",
+      "topic": "permissions",
+      "version": 1,
+      "title_es": "/sandbox en Claude Code: ejecuta comandos sin pedir permiso y sin poder salirse de tu proyecto",
+      "title_en": "/sandbox in Claude Code: run commands without prompts, locked to your project",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sandbox-ejecutar-sin-permisos-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sandbox-run-without-prompts-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
