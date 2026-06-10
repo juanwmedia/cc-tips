@@ -1078,6 +1078,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-por-encima-de-opus-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-above-opus-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 99,
+      "slug": "claude-code-agent-sdk-credit",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "claude -p deja de comerse tus límites en Claude Code: por fin tiene crédito propio",
+      "title_en": "Your claude -p scripts stop eating your Claude Code limits: they finally get their own credit",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-credito-agent-sdk-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-sdk-credit-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
