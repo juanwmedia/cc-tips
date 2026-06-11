@@ -1089,6 +1089,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-credito-agent-sdk-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agent-sdk-credit-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 100,
+      "slug": "claude-code-safe-mode",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "El modo a prueba de fallos de Claude Code: para cuando /doctor no encuentra nada",
+      "title_en": "Claude Code's safe mode: for when /doctor comes up empty",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-modo-seguro-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-safe-mode-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
