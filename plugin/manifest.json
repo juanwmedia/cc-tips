@@ -1100,6 +1100,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-modo-seguro-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-safe-mode-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 101,
+      "slug": "claude-code-mcp-tool-search",
+      "topic": "mcp",
+      "version": 1,
+      "title_es": "MCP en Claude Code: conecta 20 servidores sin comerte el contexto",
+      "title_en": "MCP in Claude Code: connect 20 servers without eating your context",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-servidores-contexto-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-tool-search-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
