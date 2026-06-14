@@ -101,17 +101,6 @@
       "contributed_by_github_username": null
     },
     {
-      "id": 10,
-      "slug": "claude-code-how-to-use-conditional-rules",
-      "topic": "fundamentals",
-      "version": 1,
-      "title_es": "Aplica Reglas Solo a Archivos Específicos con Conditional Rules",
-      "title_en": "Scope Rules to Specific Files with Conditional Rules",
-      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-how-to-use-conditional-rules-es.md",
-      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-how-to-use-conditional-rules-en.md",
-      "contributed_by_github_username": null
-    },
-    {
       "id": 11,
       "slug": "claude-code-mcp-quick-setup",
       "topic": "mcp",
@@ -1110,6 +1099,28 @@
       "title_en": "MCP in Claude Code: connect 20 servers without eating your context",
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-servidores-contexto-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-tool-search-en.md",
+      "contributed_by_github_username": null
+    },
+    {
+      "id": 102,
+      "slug": "claude-code-change-model-default",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "/model en Claude Code: por qué tu modelo se queda pegado o se te resetea sin querer",
+      "title_en": "/model in Claude Code: why your model sticks or resets when you didn't mean to",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-cambiar-modelo-default-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-change-model-default-en.md",
+      "contributed_by_github_username": null
+    },
+    {
+      "id": 103,
+      "slug": "claude-code-conditional-rules",
+      "topic": "memory-context",
+      "version": 1,
+      "title_es": "Reglas condicionales en Claude Code: que tu CLAUDE.md no cargue entero en cada sesión",
+      "title_en": "Conditional rules in Claude Code: stop loading your whole CLAUDE.md every session",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-reglas-condicionales-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-conditional-rules-en.md",
       "contributed_by_github_username": null
     }
   ]
