@@ -1133,6 +1133,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-extension-vs-code-panel-nativo-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-vs-code-extension-native-panel-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 105,
+      "slug": "claude-code-agents-md-import-symlink",
+      "topic": "memory-context",
+      "version": 1,
+      "title_es": "AGENTS.md: el estándar que leen Cursor, Codex y Copilot, pero no Claude Code",
+      "title_en": "AGENTS.md: the standard Cursor, Codex and Copilot read, but Claude Code doesn't",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agents-md-importar-symlink-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-agents-md-import-symlink-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
