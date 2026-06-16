@@ -1,84 +1,48 @@
 ---
 date: 2026-06-10
 type: tip
-title_es: "claude -p deja de comerse tus límites en Claude Code: por fin tiene crédito propio"
-title_en: "Your claude -p scripts stop eating your Claude Code limits: they finally get their own credit"
+title_es: "El crédito aparte del Agent SDK no llega (de momento): tu claude -p sigue saliendo de tu suscripción"
+title_en: "The separate Agent SDK credit isn't happening (yet): your claude -p still runs on your subscription"
 ---
 
-> **TL;DR** Desde el **15 de junio de 2026**, lo que gastan `claude -p` y el Agent SDK en planes de suscripción sale de un **crédito mensual de Agent SDK aparte**, no de tus límites interactivos. Tu cron, tu CI y tus scripts dejan de comerse la cuota que necesitas para programar en vivo. Pero es un opt-in: hay que **reclamarlo una vez** desde tu cuenta. Vence cada mes y no se acumula.
+> **TL;DR · Actualización 16 jun 2026:** Anthropic ha dado marcha atrás. El cambio que iba a mover `claude -p`, el Agent SDK, GitHub Actions y las apps de terceros a un crédito mensual propio **no entra en vigor**. Todo sigue saliendo de los límites de tu suscripción igual que antes, y **no hay ningún crédito que reclamar**. Anthropic dice que está rehaciendo el plan y avisará con antelación antes de aplicar nada.
 
-Montas una automatización con `claude -p`, la dejas en un cron o en CI, y se pasa la noche gastando. Hasta ahora todo salía de la misma bolsa: te sentabas a programar de verdad y te encontrabas el límite agotado por un script que corrió de madrugada. Ese reparto cambia el 15 de junio.
+En mayo, Anthropic anunció que desde el 15 de junio de 2026 el uso programático (`claude -p`, el Agent SDK, GitHub Actions y las apps de terceros) dejaría de tirar de los límites de tu suscripción y pasaría a un crédito mensual propio. Medio internet, este tip incluido, te dijo que te prepararas. No va a pasar, al menos por ahora: el mismo día en que iba a entrar, Anthropic mandó un correo cancelándolo.
 
-## Qué cambia el 15 de junio
+## Qué dice Anthropic ahora
 
-A partir de esa fecha, el uso programático y el interactivo dejan de competir. Son dos bolsas:
+Del aviso a los usuarios, sin paráfrasis:
 
-```
-ANTES                          DESDE EL 15 DE JUNIO
+> "No vamos a hacer este cambio hoy. Estamos trabajando para actualizar el plan y dar mejor soporte a cómo construye la gente con las suscripciones de Claude. No cambia nada por ahora. El Agent SDK, `claude -p` y el uso de apps de terceros siguen funcionando con tu suscripción exactamente igual que antes, y **no hay ningún crédito que reclamar**. Tus límites de suscripción no cambian. Cuando tengamos una actualización, la compartiremos con antelación antes de que entre en vigor."
 
-una sola bolsa de uso          bolsa interactiva      crédito Agent SDK
-programar + claude -p          terminal, IDE,         claude -p, SDK,
-compiten por el límite         web, móvil             CI, cron, scripts
-                               (tus límites de        (bolsa propia
-                                siempre, intacta)      en dólares)
-```
+Traducción práctica: si montaste prisas para reclamar un crédito o reorganizar tus crons antes del día 15, puedes deshacerlas. No hay nada que hacer.
 
-La doc lo repite igual en varias páginas: *"crédito mensual de Agent SDK, separado de tus límites interactivos"*.
+## Qué se llegó a anunciar (y hoy no aplica)
 
-## Cuánto crédito te da tu plan
+Para dejar el registro de lo que estuvo sobre la mesa, y que podría volver reformulado:
 
-El crédito es una cantidad en dólares, distinta según el plan:
+- Una **bolsa mensual de Agent SDK aparte**, separada de tus límites interactivos, para `claude -p`, el SDK, CI/cron, GitHub Actions y apps de terceros.
+- Un importe en dólares por plan: **$20** (Pro), **$100** (Max 5x), **$200** (Max 20x), con variantes en Team y Enterprise.
+- Gasto a tarifas API estándar, **sin rollover**, y un **opt-in** de una sola vez para activarlo.
 
-| Plan | Crédito mensual de Agent SDK |
-|---|---|
-| Pro | **$20** |
-| Max 5x | **$100** |
-| Max 20x | **$200** |
-| Team (Standard) | **$20** |
-| Team (Premium) | **$100** |
-| Enterprise | de **$20 a $200** según estructura |
+Nada de esto está vigente. Tu uso programático sigue contando contra los límites de tu suscripción, como siempre.
 
-Se gasta a tarifas API estándar, así que un CI que corre en cada PR o un `/loop` desatado lo vacían en días, no en semanas. Pon tope de acciones y de gasto con [`--max-turns` y `--max-budget-usd`](/es/tips/claude-code-modo-headless-agente-autonomo) en cada llamada.
+## Por qué no es una sorpresa
 
-## Qué cubre y qué no toca
+Es la segunda vez en 2026 que Anthropic anuncia un cambio de facturación sobre el uso programático y lo revierte tras el revuelo. En enero bloqueó los tokens OAuth de suscripción para herramientas de terceros y dio marcha atrás en días. El patrón se repite: anuncio, reacción de la comunidad, vuelta atrás.
 
-**Sale del crédito de Agent SDK:**
+La lectura útil: cuando llegue el próximo "tu crédito de Agent SDK cambia el día X", **no corras**. Anthropic se ha comprometido a avisar con antelación, y esta vez ese plazo se quedó en nada.
 
-- `claude -p` (modo headless): scripts, cron, hooks de build.
-- El Agent SDK en tus proyectos (Python o TypeScript).
-- GitHub Actions (la action de `@claude` que revisa PRs corre sobre el SDK).
-- Apps de terceros autenticadas vía Agent SDK.
+## Lo que sí puedes controlar mientras tanto
 
-**Sigue en tus límites de siempre (no cambia nada):**
+El reparto del gasto no ha cambiado, pero las herramientas para no vaciar tu cuota desatendido siguen ahí:
 
-- Claude Code interactivo en la terminal o el IDE.
-- Las conversaciones en web, escritorio y móvil.
-- Claude Cowork.
-
-## Tienes que reclamarlo (y vence cada mes)
-
-Es un **opt-in de una sola vez**: reclamas el crédito desde tu cuenta de Claude y queda activo. No se enciende solo, así que si no lo reclamas tu uso programático sigue como hasta ahora. El crédito **no se acumula** de un mes a otro: lo que no gastes se pierde y el siguiente mes empiezas de cero. Y es **por cuenta individual**: en un equipo no se comparte ni se agrupa entre compañeros.
-
-## Qué pasa cuando se agota
-
-Depende de un ajuste tuyo:
-
-- **Con *usage credits* activados:** el uso extra del Agent SDK continúa a tarifas API estándar. Ponle un tope mensual con `/usage-credits` para que no se dispare.
-- **Sin *usage credits*:** las peticiones del Agent SDK **se paran** hasta que el crédito se renueve el mes siguiente.
-
-Es decir, por defecto tu automatización se detiene en seco, no te genera una factura sorpresa. Es justo la red que faltaba para dejar `claude -p` corriendo sin vigilarlo.
-
-## Dónde encaja
-
-Esto es el modelo de cobro, no cómo se usa. Las piezas que lo rodean:
-
-- Ya sabes [cómo ejecutar `claude -p`](/es/tips/claude-code-modo-headless-agente-autonomo): cron, `--allowedTools`, topes de gasto. Esto es de qué bolsa sale ahora.
-- El [Agent SDK desde tu código](/es/tips/claude-agent-sdk-claude-code-desde-tu-codigo) consume de este mismo crédito.
-- Tu lado interactivo no cambia: contrólalo con [`/usage` y `/stats`](/es/tips/claude-code-uso-tokens-usage-stats).
-- En el [mapa de las cuatro formas de mandar Claude a background](/es/tips/claude-code-background-agents-mapa), el crédito solo afecta al cuadrante headless/SDK; Agent View, `/loop` y Routines siguen saliendo de tu plan.
+- Pon topes por llamada con `--max-turns` y `--max-budget-usd` en tus `claude -p`.
+- Vigila tu consumo real con `/usage` y `/stats`.
+- Si llamas al SDK desde tu propio código, de momento cuenta igual que el resto de tu uso de suscripción.
 
 > Documentación oficial: [Run Claude Code programmatically](https://code.claude.com/docs/en/headless) · [Manage costs](https://code.claude.com/docs/en/costs) · [Use the Agent SDK with your plan](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan)
 
 ## Requisitos
 
-Plan de suscripción (Pro, Max, Team o Enterprise). El cambio entra el **15 de junio de 2026**; el crédito hay que reclamarlo una vez desde tu cuenta de Claude.
+Nada que hacer. Si reclamaste algo o reorganizaste crons esperando el cambio, puedes revertirlo: tus límites de suscripción están intactos.

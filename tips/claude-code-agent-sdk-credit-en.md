@@ -1,84 +1,48 @@
 ---
 date: 2026-06-10
 type: tip
-title_es: "claude -p deja de comerse tus límites en Claude Code: por fin tiene crédito propio"
-title_en: "Your claude -p scripts stop eating your Claude Code limits: they finally get their own credit"
+title_es: "El crédito aparte del Agent SDK no llega (de momento): tu claude -p sigue saliendo de tu suscripción"
+title_en: "The separate Agent SDK credit isn't happening (yet): your claude -p still runs on your subscription"
 ---
 
-> **TL;DR** Starting **June 15, 2026**, what `claude -p` and the Agent SDK spend on subscription plans comes out of a **separate monthly Agent SDK credit**, not your interactive limits. Your cron jobs, CI and scripts stop eating the quota you need for live coding. But it's opt-in: you **claim it once** from your account. It expires monthly and doesn't roll over.
+> **TL;DR · Update, June 16, 2026:** Anthropic walked it back. The change that was going to move `claude -p`, the Agent SDK, GitHub Actions and third-party apps to their own monthly credit **is not happening**. Everything still draws from your subscription limits exactly as before, and **there's no credit to claim**. Anthropic says it's reworking the plan and will give advance notice before anything takes effect.
 
-You set up some automation with `claude -p`, drop it in a cron job or CI, and it spends all night. Until now it all came out of one pot: you'd sit down to actually code and find the limit drained by a script that ran at 3am. That split changes on June 15.
+In May, Anthropic announced that from June 15, 2026, programmatic usage (`claude -p`, the Agent SDK, GitHub Actions and third-party apps) would stop drawing from your subscription limits and move to its own monthly credit. Half the internet, this tip included, told you to get ready. It's not happening, at least for now: on the very day it was meant to land, Anthropic sent an email cancelling it.
 
-## What changes on June 15
+## What Anthropic says now
 
-From that date, programmatic and interactive usage stop competing. Two pots:
+Straight from the notice to users:
 
-```
-BEFORE                         FROM JUNE 15
+> "We're not making this change today. We're working to update the plan to better support how users build with Claude subscriptions. Nothing changes for now. Agent SDK, `claude -p`, and third-party app usage continues to work with your subscription exactly as it did before today, and **there's no credit to claim**. Your subscription limits are unchanged. When we have an update, we'll share it with advance notice before it takes effect."
 
-one shared usage pot           interactive pot        Agent SDK credit
-coding + claude -p             terminal, IDE,         claude -p, SDK,
-compete for the limit          web, mobile            CI, cron, scripts
-                               (your usual limits,    (its own budget
-                                untouched)             in dollars)
-```
+In plain terms: if you rushed to claim a credit or reshuffle your cron jobs before the 15th, you can undo it. There's nothing to do.
 
-The docs put it the same way across pages: *"a monthly Agent SDK credit, separate from your interactive usage limits."*
+## What was announced (and doesn't apply today)
 
-## How much credit your plan gives you
+For the record of what was on the table, and might come back reworded:
 
-The credit is a dollar amount, and it varies by plan:
+- A **separate monthly Agent SDK pool**, split from your interactive limits, for `claude -p`, the SDK, CI/cron, GitHub Actions and third-party apps.
+- A dollar amount per plan: **$20** (Pro), **$100** (Max 5x), **$200** (Max 20x), with variants on Team and Enterprise.
+- Spent at standard API rates, **no rollover**, and a one-time **opt-in** to turn it on.
 
-| Plan | Monthly Agent SDK credit |
-|---|---|
-| Pro | **$20** |
-| Max 5x | **$100** |
-| Max 20x | **$200** |
-| Team (Standard) | **$20** |
-| Team (Premium) | **$100** |
-| Enterprise | **$20 to $200** depending on structure |
+None of this is live. Your programmatic usage still counts against your subscription limits, as always.
 
-It's spent at standard API rates, so CI that runs on every PR or a runaway `/loop` drains it in days, not weeks. Cap actions and spend per call with [`--max-turns` and `--max-budget-usd`](/en/tips/claude-code-headless-mode-autonomous-agent).
+## Why it's not a surprise
 
-## What's covered and what isn't
+This is the second time in 2026 Anthropic has announced a billing change to programmatic usage and reversed it after the backlash. In January it blocked subscription OAuth tokens from third-party tools and backed off within days. The pattern repeats: announcement, community reaction, walk-back.
 
-**Comes out of the Agent SDK credit:**
+The useful takeaway: when the next "your Agent SDK credit changes on date X" lands, **don't rush**. Anthropic has committed to advance notice, and this time that window came to nothing.
 
-- `claude -p` (headless mode): scripts, cron, build hooks.
-- The Agent SDK in your own projects (Python or TypeScript).
-- GitHub Actions (the `@claude` PR-review action runs on the SDK).
-- Third-party apps authenticated through the Agent SDK.
+## What you can control in the meantime
 
-**Still on your normal limits (nothing changes):**
+The spend split hasn't changed, but the tools to avoid draining your quota unattended are still there:
 
-- Interactive Claude Code in the terminal or IDE.
-- Conversations on web, desktop and mobile.
-- Claude Cowork.
-
-## You have to claim it (and it expires monthly)
-
-It's a **one-time opt-in**: you claim the credit from your Claude account once and it's active. It doesn't switch on by itself, so if you never claim it your programmatic usage stays exactly as it is today. The credit **doesn't roll over** month to month: whatever you don't spend is gone, and you start fresh next month. And it's **per individual account**: on a team it can't be shared or pooled across teammates.
-
-## What happens when it runs out
-
-It comes down to one setting of yours:
-
-- **With usage credits enabled:** extra Agent SDK usage flows on at standard API rates. Cap it monthly with `/usage-credits` so it can't run away.
-- **Without usage credits:** Agent SDK requests **stop** until your credit refreshes next month.
-
-So by default your automation halts instead of handing you a surprise bill. That's the safety net that was missing for leaving `claude -p` running unattended.
-
-## Where it fits
-
-This is the billing model, not how you use it. The pieces around it:
-
-- You already know [how to run `claude -p`](/en/tips/claude-code-headless-mode-autonomous-agent): cron, `--allowedTools`, spend caps. This is which pot it draws from now.
-- The [Agent SDK from your own code](/en/tips/claude-agent-sdk-build-agents) draws from this same credit.
-- Your interactive side is unchanged: track it with [`/usage` and `/stats`](/en/tips/claude-code-track-usage-stats-dashboard).
-- On the [map of the four ways to send Claude to the background](/en/tips/claude-code-background-agents-map), the credit only touches the headless/SDK quadrant; Agent View, `/loop` and Routines still come out of your plan.
+- Cap each call with `--max-turns` and `--max-budget-usd` on your `claude -p` runs.
+- Track your real consumption with `/usage` and `/stats`.
+- If you call the SDK from your own code, for now it counts the same as the rest of your subscription usage.
 
 > Official docs: [Run Claude Code programmatically](https://code.claude.com/docs/en/headless) · [Manage costs](https://code.claude.com/docs/en/costs) · [Use the Agent SDK with your plan](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan)
 
 ## Requirements
 
-A subscription plan (Pro, Max, Team or Enterprise). The change takes effect **June 15, 2026**; the credit must be claimed once from your Claude account.
+Nothing to do. If you claimed anything or reshuffled cron jobs expecting the change, you can revert it: your subscription limits are intact.
