@@ -1155,6 +1155,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-code-review-antes-del-pr-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-code-review-before-pr-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 107,
+      "slug": "claude-code-cd-change-directory",
+      "topic": "sessions",
+      "version": 1,
+      "title_es": "/cd en Claude Code: cámbiate de repo a mitad de sesión sin perder el contexto",
+      "title_en": "/cd in Claude Code: jump to another repo mid-session without losing your context",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-cd-cambiar-directorio-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-cd-change-directory-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
