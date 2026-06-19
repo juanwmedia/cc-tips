@@ -1166,6 +1166,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-cd-cambiar-directorio-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-cd-change-directory-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 108,
+      "slug": "claude-code-usage-limits-5-hour-weekly",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "Límites de uso en Claude Code, sin mitos: la franja de 5 horas y el tope semanal",
+      "title_en": "Claude Code usage limits, demystified: the 5-hour window and the weekly cap",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-limites-de-uso-5-horas-semanal-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-usage-limits-5-hour-weekly-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
