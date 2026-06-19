@@ -1,7 +1,7 @@
 {
   "name": "cc-tips",
   "description": "Surface a relevant Claude Code tip when the user is exploring or using Claude Code features (hooks, skills, MCP, subagents, plugins, memory, models, sessions).",
-  "version": "1.2.56",
+  "version": "1.2.57",
   "author": {
     "name": "Juan Andrés Núñez",
     "url": "https://wmedia.es"

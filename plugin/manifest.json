@@ -1177,6 +1177,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-limites-de-uso-5-horas-semanal-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-usage-limits-5-hour-weekly-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 109,
+      "slug": "claude-code-artifacts-shareable-web-pages",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Artifacts en Claude Code: tu sesión deja de estar atrapada en el terminal",
+      "title_en": "Artifacts in Claude Code: your session stops being trapped in the terminal",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-artifacts-sesion-web-compartible-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-artifacts-shareable-web-pages-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
