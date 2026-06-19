@@ -7,7 +7,7 @@ title_en: "Artifacts in Claude Code: your session stops being trapped in the ter
 
 > **TL;DR** Pídele a Claude Code *"haz un artifact de…"* y publica una **página HTML autocontenida** en una URL privada de claude.ai que tu equipo abre en el navegador y ve actualizarse en vivo. Requisitos: beta, plan **Team o Enterprise**, login en claude.ai y **solo Anthropic API** (nada de Bedrock/Vertex). Es estático por diseño: sin backend, una CSP que bloquea `fetch` y recursos externos, todo va *baked in*. ¿No tienes acceso? La técnica de fondo (pedir HTML en vez de Markdown y abrirlo en local) funciona en cualquier plan.
 
-Hay una verdad incómoda que Anthropic puso por escrito en [un artículo sobre la eficacia del HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html): un Markdown de más de 100 líneas no se lee, se ojea en diagonal. Y el output de un agente vivía atrapado en tu terminal, visible solo para ti. La comunidad ya lo intentaba a mano (en Reddit alguien montó un "HTML Drive" casero para guardar y compartir estas páginas). Artifacts es esa idea, oficial.
+Hay una verdad incómoda que Anthropic puso por escrito en [un artículo sobre la eficacia del HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html): un Markdown de más de 100 líneas no se lee, se ojea en diagonal. Y el output de un agente vivía atrapado en tu terminal, visible solo para ti. La comunidad ya lo intentaba a mano (en Reddit alguien montó un ["HTML Drive" casero](https://www.reddit.com/r/ClaudeAI/comments/1t9e2xw/built_html_drive_google_drive_for_claude/) para guardar y compartir estas páginas). Artifacts es esa idea, oficial.
 
 ## Cómo funciona
 
@@ -71,4 +71,4 @@ El botón de publicar es solo para Team/Enterprise, pero lo de fondo lo puedes h
 - **Solo Anthropic API**: no en Amazon Bedrock, Google Vertex AI ni Microsoft Foundry.
 - CLI de Claude Code, o app de escritorio v1.13576.0+. Desactívalo con `"disableArtifact": true`.
 
-> Documentación oficial: [Share session output as artifacts](https://code.claude.com/docs/en/artifacts) · [Artifacts in Claude Code (blog)](https://claude.com/blog/artifacts-in-claude-code)
+> Documentación oficial: [Share session output as artifacts](https://code.claude.com/docs/en/artifacts) · [Artifacts in Claude Code (blog)](https://claude.com/blog/artifacts-in-claude-code) · [El "HTML Drive" en Reddit](https://www.reddit.com/r/ClaudeAI/comments/1t9e2xw/built_html_drive_google_drive_for_claude/)
