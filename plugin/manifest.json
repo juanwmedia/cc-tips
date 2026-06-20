@@ -1188,6 +1188,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-artifacts-sesion-web-compartible-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-artifacts-shareable-web-pages-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 110,
+      "slug": "claude-code-fork-vs-branch-en",
+      "topic": "subagents",
+      "version": 1,
+      "title_es": "/fork en Claude Code: delega una tarea en segundo plano sin re-explicar tu contexto",
+      "title_en": "/fork in Claude Code: delegate a background task without re-explaining your context",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fork-vs-branch-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fork-vs-branch-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
