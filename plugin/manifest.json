@@ -1199,6 +1199,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fork-vs-branch-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fork-vs-branch-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 111,
+      "slug": "claude-code-team-onboarding-guide",
+      "topic": "sessions",
+      "version": 1,
+      "title_es": "/team-onboarding en Claude Code: tu setup convertido en guía (aunque no tengas equipo)",
+      "title_en": "/team-onboarding in Claude Code: your setup turned into a guide (even with no team)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-team-onboarding-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-team-onboarding-guide-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
