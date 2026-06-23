@@ -1221,6 +1221,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-failed-to-connect-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-mcp-failed-to-connect-en-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 113,
+      "slug": "claude-code-interrupt-and-redirect-mid-task",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Cómo parar y reconducir a Claude Code mientras trabaja sin perder lo que ya hizo",
+      "title_en": "How to stop or redirect Claude Code mid-task without losing its work",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-interrumpir-y-redirigir-con-esc-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-interrupt-and-redirect-mid-task-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
