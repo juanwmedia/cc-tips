@@ -1232,6 +1232,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-interrumpir-y-redirigir-con-esc-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-interrupt-and-redirect-mid-task-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 114,
+      "slug": "claude-code-prompts-5-rules-anthropic",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Prompts en Claude Code: las 5 reglas que sigue Anthropic",
+      "title_en": "Prompts in Claude Code: the 5 rules Anthropic actually follows",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-prompts-5-reglas-anthropic-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-prompts-5-rules-anthropic-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
