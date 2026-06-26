@@ -1254,6 +1254,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-autofix-pr-arregla-el-ci-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-autofix-pr-fix-failing-ci-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 116,
+      "slug": "claude-code-security-patterns-custom-rules",
+      "topic": "plugins",
+      "version": 1,
+      "title_es": "Tus propias reglas de seguridad en Claude Code: caza secretos hardcodeados en cada edición, gratis",
+      "title_en": "Your own security rules in Claude Code: catch hardcoded secrets on every edit, for free",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-security-patterns-reglas-propias-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-security-patterns-custom-rules-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
