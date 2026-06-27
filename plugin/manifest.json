@@ -1265,6 +1265,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-security-patterns-reglas-propias-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-security-patterns-custom-rules-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 117,
+      "slug": "claude-code-bring-back-hidden-thinking",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Claude Code te oculta su thinking: cómo recuperarlo de verdad (y los trucos que no funcionan)",
+      "title_en": "Claude Code hides its thinking now: what actually brings it back (and the fixes that dont)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-recuperar-thinking-oculto-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-bring-back-hidden-thinking-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
