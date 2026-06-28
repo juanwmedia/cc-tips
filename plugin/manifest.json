@@ -1276,6 +1276,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-recuperar-thinking-oculto-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-bring-back-hidden-thinking-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 118,
+      "slug": "claude-code-auto-approve-plan-hook",
+      "topic": "hooks",
+      "version": 1,
+      "title_es": "Deja de aprobar cada plan en Claude Code (sin auto-aprobar nada más)",
+      "title_en": "Stop approving every plan in Claude Code (without opening the floodgates)",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-auto-aprobar-plan-hook-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-auto-approve-plan-hook-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
