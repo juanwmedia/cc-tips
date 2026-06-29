@@ -22,10 +22,11 @@ Claude Code pipes a JSON object to your status line script on stdin. It now incl
 
 `used_percentage` runs 0 to 100. `resets_at` is Unix epoch seconds (when the window resets).
 
-Result:
+Result, a real status line with the new segment at the end:
 
 ```
-my-project  main ✦   5h 24% · 7d 41%
+ my-project   main │ Opus 4.8 │ ███░░ 58% │ 5h 24% · 7d 82%
+                                            ╰── you add this
 ```
 
 Green while you've got room, red as you near the wall.
@@ -65,6 +66,8 @@ bar() {                       # $1 = percentage
 printf '5h %s · 7d %s' "$(bar "$fh")" "$(bar "${sd:-0}")"
 ```
 
+The script prints one line to stdout, and that line is your status line. Nothing more.
+
 ### **3. The `// empty` is not optional**
 
 `rate_limits` only exists on a Claude.ai subscription (Pro/Max) and shows up **after the first response** of the session. Each window can be absent on its own. Without the `// empty` and the `exit 0`, you'd see a broken status line at startup until the first message.
@@ -82,7 +85,7 @@ For a countdown, subtract `resets_at` from the current time: `jq -r '.rate_limit
 
 > Official docs: [Status line — rate limit usage](https://code.claude.com/docs/en/statusline)
 
-This extends the [status line script](/en/tips/customize-your-claude-code-status-line) with the fields almost nobody uses. If what you want is the breakdown of what's eating your limit, that's `/usage`'s job; this is the always-on glance.
+This extends the [status line script](/en/tips/customize-your-claude-code-status-line) with the fields almost nobody uses. For the breakdown of what's eating your limit there are [`/usage` and `/stats`](/en/tips/claude-code-track-usage-stats-dashboard); and to understand the three windows, [how your usage limits actually work](/en/tips/claude-code-usage-limits-5-hour-weekly). This is the always-on glance.
 
 ## Requirements
 

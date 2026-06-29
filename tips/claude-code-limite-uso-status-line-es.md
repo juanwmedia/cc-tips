@@ -22,10 +22,11 @@ Claude Code envía a tu script de status line un JSON por stdin. Desde hace poco
 
 `used_percentage` va de 0 a 100. `resets_at` es epoch en segundos (cuándo se reinicia la ventana).
 
-Resultado:
+Resultado, una status line real con el segmento nuevo al final:
 
 ```
-my-project  main ✦   5h 24% · 7d 41%
+ my-project   main │ Opus 4.8 │ ███░░ 58% │ 5h 24% · 7d 82%
+                                            ╰── lo añades tú
 ```
 
 En verde mientras vas holgado, en rojo cuando te acercas al muro.
@@ -65,6 +66,8 @@ bar() {                       # $1 = porcentaje
 printf '5h %s · 7d %s' "$(bar "$fh")" "$(bar "${sd:-0}")"
 ```
 
+El script escribe una línea por stdout y esa línea es tu status line. Nada más.
+
 ### **3. El `// empty` no es opcional**
 
 `rate_limits` solo existe en suscripción Claude.ai (Pro/Max) y aparece **tras la primera respuesta** de la sesión. Cada ventana puede faltar por separado. Sin el `// empty` y el `exit 0`, al arrancar verías una status line rota hasta el primer mensaje.
@@ -82,7 +85,7 @@ Para una cuenta atrás, resta `resets_at` de la hora actual: `jq -r '.rate_limit
 
 > Documentación oficial: [Status line — rate limit usage](https://code.claude.com/docs/en/statusline)
 
-Esto extiende el [script de status line](/es/tips/personaliza-tu-status-line-en-claude-code) con los campos que casi nadie usa. Si lo que quieres es el desglose de qué se come tu límite, eso es trabajo de `/usage`; esto es el vistazo permanente.
+Esto extiende el [script de status line](/es/tips/personaliza-tu-status-line-en-claude-code) con los campos que casi nadie usa. Para el desglose de qué se come tu límite están [`/usage` y `/stats`](/es/tips/claude-code-uso-tokens-usage-stats); y para entender las tres ventanas, [cómo funcionan tus límites de uso](/es/tips/claude-code-limites-de-uso-5-horas-semanal). Esto es el vistazo permanente.
 
 ## Requisitos
 
