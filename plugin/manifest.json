@@ -1287,6 +1287,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-auto-aprobar-plan-hook-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-auto-approve-plan-hook-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 119,
+      "slug": "claude-code-usage-limit-status-line",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "Tu límite de uso de Claude Code, siempre a la vista en la status line",
+      "title_en": "Your Claude Code usage limit, always in sight in the status line",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-limite-uso-status-line-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-usage-limit-status-line-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
