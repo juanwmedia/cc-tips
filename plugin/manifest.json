@@ -1298,6 +1298,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-limite-uso-status-line-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-usage-limit-status-line-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 120,
+      "slug": "claude-code-output-style-deletes-engineering",
+      "topic": "fundamentals",
+      "version": 1,
+      "title_es": "Tu output style en Claude Code borra el comportamiento de ingeniería sin avisar",
+      "title_en": "Your Claude Code output style is silently deleting its engineering behavior",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-output-style-borra-ingenieria-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-output-style-deletes-engineering-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
