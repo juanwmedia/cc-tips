@@ -1320,6 +1320,17 @@
       "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sonnet-5-es.md",
       "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-sonnet-5-near-opus-en.md",
       "contributed_by_github_username": null
+    },
+    {
+      "id": 122,
+      "slug": "claude-code-fable-5-available-again",
+      "topic": "models-cost",
+      "version": 1,
+      "title_es": "Fable 5 disponible de nuevo en Claude Code: esto es todo lo que tienes que saber",
+      "title_en": "Fable 5 is back in Claude Code: everything you need to know",
+      "url_es": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-disponible-de-nuevo-es.md",
+      "url_en": "https://raw.githubusercontent.com/juanwmedia/cc-tips/main/tips/claude-code-fable-5-available-again-en.md",
+      "contributed_by_github_username": null
     }
   ]
 }
